@@ -3,6 +3,8 @@ include ("get_json.php");
 include ("auth.php");
 function create_user ($login, $passwd, $isadmin)
 {
+    if (!file_exists(PATH))
+        mkdir(PATH);
     $database = get_users_database();
     $array[] = array(
         "login" => $_POST["login"],

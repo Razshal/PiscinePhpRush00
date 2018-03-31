@@ -1,7 +1,6 @@
 <?php
-$path = "../database";
-$file_name = $path . "/users.json";
-$success = false;
+include "../functions/set_json.php";
+$success = true;
 
 if (!($_POST["submit"] === "OK"
     && isset($_POST["login"]) && isset($_POST["passwd"])
@@ -11,30 +10,22 @@ if (!($_POST["submit"] === "OK"
 }
 else
 {
-    if (!file_exists($path))
-        mkdir($path);
-    if (!file_exists($file_name))
+    if (!file_exists(USERS_DATABASE))
+        create_user($_POST["login"], $_POST["passwd"], 0);
+    else
     {
-        $array[] = array("login" => $_POST["login"],
-                         "passwd" => hash("sha512", $_POST["passwd"]), "isadmin" => 0, "orders" => array());
-        if (file_put_contents($file_name, json_encode($array)))
-            $success = true;
-    }
-    else if (($file = file_get_contents($file_name)) != false)
-    {
-        $array = unserialize($file);
+        $array = get_users_database();
         foreach ($array as $subarray)
         {
             if ($subarray["login"] === $_POST["login"])
+            {
                 $success = false;
+                break;
+            }
         }
-        $add_array = array("login" => $_POST["login"], "passwd" => hash("sha512", $_POST["passwd"]));
-        $array[] = $add_array;
-        if (file_put_contents($file_name, serialize($array)))
-            $success = true;
+        if ($success === true)
+            $success = create_user($_POST["login"], $_POST["passwd"], 0);
     }
-    else
-        $success = false;
 }
 ?>
 
@@ -43,7 +34,14 @@ else
     <body>
         <?php include "../site_structure/header.php"; ?>
 
-        <h1>le contenu de la page</h1>
+        <p>
+            <?php
+                if ($success === false)
+                    echo "Failed to sign you in, maybe the account already exists or your datas are incorrect";
+                else
+                    echo "Your account has been created";
+            ?>
+        </p>
 
         <?php include "../site_structure/footer.php"; ?>
     </body>
