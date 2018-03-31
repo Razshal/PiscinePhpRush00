@@ -13,7 +13,33 @@ function create_user ($login, $passwd, $isadmin)
         "orders" => array()
     );
     $database["users"][] = $array;
-    if (!file_put_contents(USERS_DATABASE, json_encode($database)))
+    if (!file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        return false;
+    return true;
+}
+
+function delete_user ($login)
+{
+    $done = false;
+
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_users_database();
+    foreach ($database["users"] as &$user)
+    {
+        if ($user["login"] === $login)
+        {
+            $temp = $database["users"][0];
+            $database["users"][0] = $user;
+            $user = $temp;
+            array_shift($database["users"]);
+            break;
+        }
+    }
+    array_values($database["users"]);
+    $done = true;
+    if ($done === false ||
+        !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
     return true;
 }
@@ -31,7 +57,7 @@ function create_product ($name, $category, $price, $image, $id)
         "id" => $id
     );
     $database["product"][] = $list;
-    if (!file_put_contents(PRODUCT_DATABASE, json_encode($database)))
+    if (!file_put_contents(PRODUCT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
     return true;
 }
