@@ -9,7 +9,6 @@ function auth ($login, $passwd)
 {
     $array = get_users_database();
     $hash = hash_pw($passwd);
-    var_dump($array);
     foreach ($array["users"] as $subarray)
     {
         if ($subarray["login"] === $login)

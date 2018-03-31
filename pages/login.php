@@ -2,8 +2,8 @@
 include_once "../site_structure/head.php";
 include_once ("../functions/auth.php");
 
-if (auth($_GET["login"], $_GET["passwd"]) === true)
-    $_SESSION["logged_on_user"] = $_GET["login"];
+if (auth($_POST["login"], $_POST["passwd"]) === true)
+    $_SESSION["logged_on_user"] = $_POST["login"];
 else
     $_SESSION["logged_on_user"] = "";
 ?>
@@ -16,7 +16,7 @@ else
             ?>
             <div id="loginForm">
                 <h2>Login</h2>
-                <form method="get" action="login.php" name="login.php">
+                <form method="post" action="login.php" name="login.php">
                     Identifiant: <input type="text" name="login"/>
                     <br/>
                     Mot de passe: <input type="password" name="passwd"/>

@@ -1,6 +1,6 @@
 <header>
     <nav>
-        <a href="#">Home</a>
+        <a href="/index.php">Home</a>
         <a href="/pages/browse.php">Browse Products</a>
         <a href="/pages/login.php">
             <?php
