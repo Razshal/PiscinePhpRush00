@@ -34,7 +34,6 @@
         } ?>
         </table>
         <h2>Total : <?php echo $total;?></h2>
-
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

@@ -85,4 +85,16 @@ function delete_product ($name)
         return false;
     return true;
 }
+
+function create_category ($category)
+{
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_product_database();
+    $list = array("name" => $category);
+    $database["categories"][] = $list;
+    if (!file_put_contents(CAT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        return false;
+    return true;
+}
 ?>
