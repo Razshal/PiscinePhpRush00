@@ -15,6 +15,19 @@ function get_users_database()
         return $array;
     }
 }
+function get_user($name)
+{
+    if (file_exists(USERS_DATABASE))
+        $database = json_decode(file_get_contents(USERS_DATABASE), true);
+    else
+        return NULL;
+    foreach ($database["users"] as $user)
+    {
+        if ($user === $name)
+            return $user;
+    }
+    return NULL;
+}
 
 function get_product_database()
 {
@@ -38,6 +51,7 @@ function get_product($name)
         if ($prod === $name)
             return $prod;
     }
+    return NULL;
 }
 
 function get_categories_database()
@@ -50,5 +64,18 @@ function get_categories_database()
         $list["categories"] = array();
         return $list;
     }
+}
+function get_category($name)
+{
+    if (file_exists(CAT_DATABASE))
+        $database = json_decode(file_get_contents(CAT_DATABASE), true);
+    else
+        return NULL;
+    foreach ($database["products"] as $cat)
+    {
+        if ($cat === $name)
+            return $cat;
+    }
+    return NULL;
 }
 ?>

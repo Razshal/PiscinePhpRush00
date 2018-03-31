@@ -4,13 +4,13 @@
       "name": "Oculus Rift",
       "category": "1",
       "price": 500,
-      "images": 0
+      "image": 0
     },
     {
       "name": "Oculus Rift DK2",
       "category": "1",
       "price": 200,
-      "images": 0
+      "image": 0
     }
   ]
 }

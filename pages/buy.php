@@ -4,14 +4,13 @@ include "../functions/get_json.php";
 
 if (isset($_GET["categories"]) && $_GET["categories"] != "")
 {
-
+    //wip
+    echo ("This button is under construction");
 }
 ?>
-
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
-
         <h1>Our products</h1>
         <form method="get" action="buy.php" name="buy.php">
             <select name="categories" title="categories">
@@ -37,9 +36,16 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
             if (isset($_GET["categories"]) && $_GET["categories"] != "")
             {
                 $count = 0;
-                if (isset($_GET))
-            }
-            ?>
+                $items = get_product_database();
+                foreach ($items["products"] as $product)
+                {?>
+                    <tr>
+                        <td><?php echo $product["image"]?></td>
+                        <td><?php echo $product["name"]?></td>
+                        <td><?php echo $product["price"]?></td>
+                    </tr><?php
+                }
+            }?>
         </table>
         <?php include "../site_structure/footer.php"; ?>
     </body>
