@@ -1,14 +1,12 @@
 <?php
 include "../site_structure/head.php";
-include "../functions/get_json.php";
+include_once "../functions/get_json.php";
+include_once "../functions/set_json.php";
 
 if (isset($_POST["submit"]) && $_POST["submit"] === "add"
-    && isset($_POST["product"]) && $_POST["product"] != ""
-    && ($product = get_product($_POST["product"])))
+    && isset($_POST["product"]) && $_POST["product"] != "")
 {
-    if (!isset($_SESSION["basket"]))
-        $_SESSION["basket"] = array();
-    $_SESSION["basket"][] = $product;
+    add_to_basket($_POST["product"]);
 }
 ?>
 <html>

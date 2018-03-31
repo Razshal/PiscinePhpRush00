@@ -2,7 +2,8 @@
 include_once "../site_structure/head.php";
 include_once "../functions/auth.php";
 
-if (auth($_POST["login"], $_POST["passwd"]) === true)
+if (isset($_POST["login"]) && isset($_POST["passwd"])
+    && auth($_POST["login"], $_POST["passwd"]) === true)
     $_SESSION["logged_on_user"] = $_POST["login"];
 else
     $_SESSION["logged_on_user"] = "";
