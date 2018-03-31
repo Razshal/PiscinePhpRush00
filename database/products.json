@@ -11,6 +11,12 @@
       "category": ["vr"],
       "price": 200,
       "image": 0
+    },
+    {
+      "name": "A screen",
+      "category": ["video"],
+      "price": 200,
+      "image": 0
     }
   ]
 }

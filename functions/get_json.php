@@ -48,7 +48,7 @@ function get_product($name)
         return NULL;
     foreach ($database["products"] as $prod)
     {
-        if ($prod === $name)
+        if ($prod["name"] === $name)
             return $prod;
     }
     return NULL;

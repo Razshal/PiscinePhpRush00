@@ -7,6 +7,14 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
     //wip
     echo ("This button is under construction");
 }
+if (isset($_POST["submit"]) && $_POST["submit"] === "add"
+    && isset($_POST["product"]) && $_POST["product"] != ""
+    && ($product = get_product($_POST["product"])))
+{
+    if (!isset($_SESSION["basket"]))
+        $_SESSION["basket"] = array();
+    $_SESSION["basket"][] = $product;
+}
 ?>
 <html>
     <body>
@@ -49,7 +57,7 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
                         <td><?php echo $product["name"]?></td>
                         <td><?php echo $product["price"]?></td>
                         <td>
-                            <form method="get" action="buy.php" name="buy.php">
+                            <form method="post" action="buy.php" name="buy.php">
                                 <input type="submit" name="add" value="<?php echo $product["name"]; ?>">
                             </form>
                         </td>
@@ -72,7 +80,8 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
                     <td><?php echo $product["price"] ?></td>
                     <td>
                         <form method="post" action="buy.php" name="buy.php">
-                            <input type="submit" name="<?php echo $product["name"]; ?>" value="add">
+                            <input type="submit" name="submit" value="add">
+                            <input type="hidden" name="product" value="<?php echo $product["name"]; ?>">
                         </form>
                     </td>
                     </tr><?php
