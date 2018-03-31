@@ -2,7 +2,6 @@
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
-
         <h1>Your Basket</h1>
         <table>
             <tr>

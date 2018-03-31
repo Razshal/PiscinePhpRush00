@@ -2,7 +2,10 @@
 include "../site_structure/head.php";
 include "../functions/get_json.php";
 
+if (isset($_GET["categories"]) && $_GET["categories"] != "")
+{
 
+}
 ?>
 
 <html>
@@ -25,10 +28,18 @@ include "../functions/get_json.php";
         </form>
         <table>
             <tr>
+                <th>Image</th>
                 <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
+                <th>Price</th>
             </tr>
+            <?php
+            $items_per_page = 10;
+            if (isset($_GET["categories"]) && $_GET["categories"] != "")
+            {
+                $count = 0;
+                if (isset($_GET))
+            }
+            ?>
         </table>
         <?php include "../site_structure/footer.php"; ?>
     </body>
