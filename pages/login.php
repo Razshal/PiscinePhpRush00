@@ -6,12 +6,13 @@ if (auth($_POST["login"], $_POST["passwd"]) === true)
     $_SESSION["logged_on_user"] = $_POST["login"];
 else
     $_SESSION["logged_on_user"] = "";
+$logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"] != "");
 ?>
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
         <?php
-        if (!isset($_SESSION["logged_on_user"]) || $_SESSION["logged_on_user"] == "")
+        if (!$logged_user)
         {
             ?>
             <div id="loginForm">

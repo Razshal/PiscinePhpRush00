@@ -7,7 +7,7 @@ if (auth($_SESSION["logged_on_user"], $_POST["passwd"]) === true)
     $user_has_been_deleted = delete_user($_SESSION["logged_on_user"]);
     $_SESSION["logged_on_user"] = "";
 }
-$logged_user = (isset($_SESSION["logged_on_user"]) || $_SESSION["logged_on_user"] != "");
+$logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"] != "");
 ?>
 <html>
     <body>

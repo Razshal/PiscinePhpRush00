@@ -5,11 +5,9 @@ include_once "../functions/set_json.php";
 $success = true;
 
 if (!($_POST["submit"] === "OK"
-    && isset($_POST["login"]) && isset($_POST["passwd"])
-    && $_POST["passwd"] != "" && $_POST["login"] != ""))
-{
+        && isset($_POST["login"]) && isset($_POST["passwd"])
+        && $_POST["passwd"] != "" && $_POST["login"] != ""))
     $success = false;
-}
 else
 {
     if (!file_exists(USERS_DATABASE))
@@ -34,14 +32,14 @@ else
     <body>
         <?php include "../site_structure/header.php"; ?>
 
-        <p>
+        <h1>
             <?php
                 if ($success === false)
-                    echo "Failed to sign you in, maybe the account already exists or your datas are incorrect";
+                    echo "Failed to sign you in, maybe this login already exists or your datas are incorrect";
                 else
                     echo "Your account has been created";
             ?>
-        </p>
+        </h1>
 
         <?php include "../site_structure/footer.php"; ?>
     </body>
