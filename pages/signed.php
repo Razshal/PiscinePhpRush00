@@ -1,5 +1,7 @@
+<?php include "../site_structure/head.php"; ?>
+
 <?php
-include "../functions/set_json.php";
+include_once "../functions/set_json.php";
 $success = true;
 
 if (!($_POST["submit"] === "OK"
@@ -15,7 +17,7 @@ else
     else
     {
         $array = get_users_database();
-        foreach ($array as $subarray)
+        foreach ($array["users"] as $subarray)
         {
             if ($subarray["login"] === $_POST["login"])
             {
@@ -23,13 +25,11 @@ else
                 break;
             }
         }
-        if ($success === true)
+        if ($success != false)
             $success = create_user($_POST["login"], $_POST["passwd"], 0);
     }
 }
 ?>
-
-<?php include "../site_structure/head.php"; ?>
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>

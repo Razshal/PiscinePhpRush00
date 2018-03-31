@@ -13,3 +13,4 @@ function get_users_database()
         return $array;
     }
 }
+?>

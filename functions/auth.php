@@ -1,5 +1,5 @@
 <?php
-include "get_json.php";
+include_once "get_json.php";
 
 function hash_pw($passwd)
 {
@@ -7,11 +7,10 @@ function hash_pw($passwd)
 }
 function auth ($login, $passwd)
 {
-
-    $array = json_decode(file_get_contents(USERS_DATABASE),true);
+    $array = get_users_database();
     $hash = hash_pw($passwd);
     var_dump($array);
-    foreach ($array["users"] as &$subarray)
+    foreach ($array["users"] as $subarray)
     {
         if ($subarray["login"] === $login)
         {
