@@ -33,19 +33,54 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
             </tr>
             <?php
             $items_per_page = 10;
+            /************************** THIS IS BROKEN ATM ********************/
             if (isset($_GET["categories"]) && $_GET["categories"] != "")
             {
                 $count = 0;
                 $items = get_product_database();
                 foreach ($items["products"] as $product)
-                {?>
+                {
+                    if (in_array($_GET["categories"], $product["category"]))
+                    {
+                        $count++;
+                        ?>
                     <tr>
-                        <td><?php echo $product["image"]?></td>
+                        <td><img src="<?php echo $product["image"]?>"/></td>
                         <td><?php echo $product["name"]?></td>
                         <td><?php echo $product["price"]?></td>
+                        <td>
+                            <form method="post" action="buy.php" name="buy.php">
+                                <input type="submit" name="<?php echo $product["name"]; ?>" value="Add to basket">
+                            </form>
+                        </td>
                     </tr><?php
+                    }
+                    if ($count >= $items_per_page)
+                        break;
                 }
-            }?>
+            }
+            /***************************************************************/
+            else
+                $count = 0;
+                $items = get_product_database();
+                foreach ($items["products"] as $product)
+                {
+                    $count++;
+                    ?>
+                    <tr>
+                    <td><?php echo $product["image"]?></td>
+                    <td><?php echo $product["name"]?></td>
+                    <td><?php echo $product["price"]?></td>
+                    <td>
+                        <form method="post" action="buy.php" name="buy.php">
+                            <input type="submit" name="<?php echo $product["name"]; ?>" value="Add to basket">
+                        </form>
+                    </td>
+                    </tr><?php
+                    if ($count >= $items_per_page)
+                        break;
+               }
+                ?>
         </table>
         <?php include "../site_structure/footer.php"; ?>
     </body>
