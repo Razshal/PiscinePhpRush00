@@ -14,6 +14,7 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
         <h1>Our products</h1>
         <form method="get" action="buy.php" name="buy.php">
             <select name="categories" title="categories">
+                <option value="">No filter</option>
                 <?php
                 $categories = get_categories_database();
                 foreach ($categories["categories"] as $cat)
@@ -33,14 +34,13 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
             </tr>
             <?php
             $items_per_page = 10;
-            /************************** THIS IS BROKEN ATM ********************/
             if (isset($_GET["categories"]) && $_GET["categories"] != "")
             {
                 $count = 0;
                 $items = get_product_database();
                 foreach ($items["products"] as $product)
                 {
-                    if (in_array($_GET["categories"], $product["category"]))
+                    if (in_array($_GET["categories"], $product["category"], true))
                     {
                         $count++;
                         ?>
@@ -49,8 +49,8 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
                         <td><?php echo $product["name"]?></td>
                         <td><?php echo $product["price"]?></td>
                         <td>
-                            <form method="post" action="buy.php" name="buy.php">
-                                <input type="submit" name="<?php echo $product["name"]; ?>" value="Add to basket">
+                            <form method="get" action="buy.php" name="buy.php">
+                                <input type="submit" name="add" value="<?php echo $product["name"]; ?>">
                             </form>
                         </td>
                     </tr><?php
@@ -59,27 +59,27 @@ if (isset($_GET["categories"]) && $_GET["categories"] != "")
                         break;
                 }
             }
-            /***************************************************************/
             else
+            {
                 $count = 0;
                 $items = get_product_database();
-                foreach ($items["products"] as $product)
-                {
+                foreach ($items["products"] as $product) {
                     $count++;
                     ?>
                     <tr>
-                    <td><?php echo $product["image"]?></td>
-                    <td><?php echo $product["name"]?></td>
-                    <td><?php echo $product["price"]?></td>
+                    <td><img src="<?php echo $product["image"] ?>"/></td>
+                    <td><?php echo $product["name"] ?></td>
+                    <td><?php echo $product["price"] ?></td>
                     <td>
                         <form method="post" action="buy.php" name="buy.php">
-                            <input type="submit" name="<?php echo $product["name"]; ?>" value="Add to basket">
+                            <input type="submit" name="<?php echo $product["name"]; ?>" value="add">
                         </form>
                     </td>
                     </tr><?php
                     if ($count >= $items_per_page)
                         break;
-               }
+                }
+            }
                 ?>
         </table>
         <?php include "../site_structure/footer.php"; ?>

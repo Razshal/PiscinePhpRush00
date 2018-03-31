@@ -2,13 +2,13 @@
   "products": [
     {
       "name": "Oculus Rift",
-      "category": ["1", "2"],
+      "category": ["vr"],
       "price": 500,
       "image": 0
     },
     {
       "name": "Oculus Rift DK2",
-      "category": ["1", "2"],
+      "category": ["vr"],
       "price": 200,
       "image": 0
     }

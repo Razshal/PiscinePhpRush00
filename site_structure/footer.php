@@ -1,3 +1,4 @@
 <footer>
-    <p>Lower infos</p>
+    <hr/>
+    <p>Some footer content</p>
 </footer>
