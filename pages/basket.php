@@ -62,7 +62,7 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
                 </tr>
             <?php
             }
-        } ?>
+        }?>
         </table>
         <h2>Total : <?php echo $total;?></h2>
         <?php if ($success === false) echo "<h3>Error</h3>";?>
