@@ -1,6 +1,7 @@
 <?php
 include_once ("get_json.php");
 include_once ("auth.php");
+
 function create_user ($login, $passwd, $isadmin)
 {
     if (!file_exists(PATH))
@@ -17,7 +18,6 @@ function create_user ($login, $passwd, $isadmin)
         return false;
     return true;
 }
-
 function delete_user ($login)
 {
     $done = false;
@@ -53,11 +53,35 @@ function create_product ($name, $category, $price, $image, $id)
         "name" => $name,
         "category" => $category,
         "price" => $price,
-        "image" => $image,
-        "id" => $id
+        "image" => $image
     );
-    $database["product"][] = $list;
+    $database["products"][] = $list;
     if (!file_put_contents(PRODUCT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        return false;
+    return true;
+}
+function delete_product ($name)
+{
+    $done = false;
+
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_users_database();
+    foreach ($database["products"] as &$prod)
+    {
+        if ($prod["name"] === $name)
+        {
+            $temp = $database["products"][0];
+            $database["products"][0] = $prod;
+            $prod = $temp;
+            array_shift($database["products"]);
+            break;
+        }
+    }
+    array_values($database["products"]);
+    $done = true;
+    if ($done === false ||
+        !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
     return true;
 }

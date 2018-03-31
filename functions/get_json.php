@@ -1,7 +1,7 @@
 <?php
 define("PATH", "../database");
 define("USERS_DATABASE", PATH . "/users.json");
-define("PRODUCT_DATABASE", PATH . "/product.json");
+define("PRODUCT_DATABASE", PATH . "/products.json");
 
 function get_users_database()
 {
@@ -22,7 +22,7 @@ function get_product_database()
     else
     {
         $list = array();
-        $list["product"] = array();
+        $list["products"] = array();
         return $list;
     }
 }
