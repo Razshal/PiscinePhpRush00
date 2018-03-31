@@ -26,4 +26,17 @@ function get_product_database()
         return $list;
     }
 }
+
+function get_product($name)
+{
+    if (file_exists(PRODUCT_DATABASE))
+        $database = json_decode(file_get_contents(PRODUCT_DATABASE), true);
+    else
+        return NULL;
+    foreach ($database["products"] as $prod)
+    {
+        if ($prod === $name)
+            return $prod;
+    }
+}
 ?>
