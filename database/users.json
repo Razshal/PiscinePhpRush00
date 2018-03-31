@@ -1,0 +1,20 @@
+{
+  "users" :
+  [
+
+    {
+      "login": "mfonteni",
+      "passwd": "123",
+      "isadmin": 1,
+      "orders": {}
+    },
+    {
+      "name": "abouvero",
+      "password": "123",
+      "isadmin": 1,
+      "orders": {}
+    }
+
+  ]
+
+}

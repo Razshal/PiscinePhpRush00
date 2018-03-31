@@ -1,17 +1,17 @@
 <?php
+include "get_json.php";
+
 function hash_pw($passwd)
 {
     return hash ("whirlpool", $passwd);
 }
 function auth ($login, $passwd)
 {
-    $path = "../database";
-    $file_name = $path . "/users.csv";
-    $file = fopen($file_name, "r");
-    $array = unserialize(file_get_contents($file_name));
-    $hash = hash_pw($passwd);
 
-    foreach ($array as &$subarray)
+    $array = json_decode(file_get_contents(USERS_DATABASE),true);
+    $hash = hash_pw($passwd);
+    var_dump($array);
+    foreach ($array["users"] as &$subarray)
     {
         if ($subarray["login"] === $login)
         {
