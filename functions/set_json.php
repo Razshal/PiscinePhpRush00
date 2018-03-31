@@ -97,4 +97,23 @@ function create_category ($category)
         return false;
     return true;
 }
+
+function delete_from_array($name, $array)
+{
+    echo "yes";
+    foreach ($array as &$item)
+    {
+
+        if ($item["name"] === $name)
+        {
+            $temp = $array[0];
+            $array[0] = $item;
+            $item = $temp;
+            array_shift($array);
+            break;
+        }
+    }
+    array_values($array);
+    return $array;
+}
 ?>

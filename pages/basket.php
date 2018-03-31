@@ -1,4 +1,17 @@
-<?php include "../site_structure/head.php"; ?>
+<?php
+include "../site_structure/head.php";
+include_once "../functions/set_json.php";
+
+if (isset($_POST["action"]) && $_POST["action"] === "Delete"
+    && isset($_POST["product"]) && $_POST["product"] != "")
+{
+ //   var_dump($_SESSION["basket"]);
+    var_dump($_POST);
+    if (isset($_SESSION["basket"]["product"]))
+        $_SESSION["basket"] = delete_from_array($_POST["product"], $_SESSION["basket"]);
+}
+
+?>
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
@@ -24,7 +37,8 @@
                     <td><?php echo $item["qtty"];?></td>
                     <td>
                         <form method="post" action="basket.php" name="basket.php">
-                            <input type="button" name="<?php echo $item["name"]; ?>" value="Delete">
+                            <input type="submit" name="action" value="Delete">
+                            <input type="hidden" name="product" value="<?php echo $item["name"];?>">
                         </form>
                     </td>
                 </tr>
