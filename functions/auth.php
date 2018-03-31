@@ -1,10 +1,15 @@
 <?php
+function hash_pw($passwd)
+{
+    return hash ("whirlpool", $passwd);
+}
 function auth ($login, $passwd)
 {
-    $path = "../private";
-    $file_name = $path . "/passwd";
+    $path = "../database";
+    $file_name = $path . "/users.csv";
+    $file = fopen($file_name, "r");
     $array = unserialize(file_get_contents($file_name));
-    $hash = hash ("sha512", $passwd);
+    $hash = hash_pw($passwd);
 
     foreach ($array as &$subarray)
     {
@@ -16,5 +21,6 @@ function auth ($login, $passwd)
                 return (false);
         }
     }
+    return (false);
 }
 ?>

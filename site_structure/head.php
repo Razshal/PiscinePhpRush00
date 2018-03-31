@@ -4,5 +4,5 @@
 <head>
     <meta charset="UTF-8">
     <title>La boutique</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo (__DIR__ . "style/style.css")?>">
+    <link rel="stylesheet" type="text/css" href="/style/style.css"">
 </head>
