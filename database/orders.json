@@ -71,6 +71,17 @@
                     "image": 0,
                     "qtty": 2
                 }
+            ],
+            [
+                {
+                    "name": "Oculus Rift",
+                    "category": [
+                        "vr"
+                    ],
+                    "price": 500,
+                    "image": 0,
+                    "qtty": "7"
+                }
             ]
         ]
     }

@@ -3,7 +3,8 @@ include_once "../site_structure/head.php";
 include_once "../functions/set_json.php";
 include_once "../functions/get_json.php";
 $user_has_been_deleted = true;
-if (auth($_SESSION["logged_on_user"], $_POST["passwd"]) === true)
+if (auth($_SESSION["logged_on_user"], $_POST["passwd"]) === true
+    && $_POST["submit"] === "Delete my account" )
 {
     $user_has_been_deleted = delete_user($_SESSION["logged_on_user"]);
     $_SESSION["logged_on_user"] = "";
@@ -20,6 +21,12 @@ $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"
         <form method="post" action="account.php" name="account.php">
             Confirm your password for deletion: <input type="password" name="passwd"/>
             <input type="submit" name="submit" value="Delete my account"/>
+        </form>
+            <br/>
+        <form method="post" action="account.php" name="account.php">
+            Actual password: <input type="password" name="oldpw"/>
+            New password: <input type="password" name="newpw"/>
+            <input type="submit" name="submit" value="Change Password"/>
         </form>
         <?php
         }

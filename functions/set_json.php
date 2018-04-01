@@ -21,7 +21,6 @@ function create_user ($login, $passwd, $isadmin)
 function delete_user ($login)
 {
     $done = false;
-
     if (!file_exists(PATH))
         mkdir(PATH);
     $database = get_users_database();
@@ -33,22 +32,38 @@ function delete_user ($login)
             $database["users"][0] = $user;
             $user = $temp;
             array_shift($database["users"]);
+            $done = true;
             break;
         }
     }
     array_values($database["users"]);
-    $done = true;
+    delete_all_user_orders($login);
     if ($done === false ||
         !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
     return true;
 }
-/*
-function modif_user($login, $password)
+function alter_user($login, $password)
 {
-
+    $done = false;
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_users_database();
+    foreach ($database["users"] as &$user)
+    {
+        if ($user["login"] === $login)
+        {
+            $user["passwd"] = hash_pw($password);
+            $done = true;
+            break;
+        }
+    }
+    if ($done === false
+        || !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        return false;
+    return true;
 }
-*/
+
 function create_product ($name, $category, $price, $image, $id)
 {
     if (!file_exists(PATH))
@@ -68,7 +83,6 @@ function create_product ($name, $category, $price, $image, $id)
 function delete_product ($name)
 {
     $done = false;
-
     if (!file_exists(PATH))
         mkdir(PATH);
     $database = get_users_database();
@@ -80,11 +94,11 @@ function delete_product ($name)
             $database["products"][0] = $prod;
             $prod = $temp;
             array_shift($database["products"]);
+            $done = true;
             break;
         }
     }
     array_values($database["products"]);
-    $done = true;
     if ($done === false ||
         !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
@@ -117,12 +131,28 @@ function create_order ($login, $basket)
 }
 function delete_order ($login, $order)
 {
-    if (!isset($basket) || empty($basket))
-        return false;
     if (!file_exists(PATH))
         mkdir(PATH);
     $database = get_order_database();
-    $database["orders"][$login][] = $basket;
+    if (!isset($database["orders"][$login][0]) || !isset($database["orders"][$login][$order]))
+        return false;
+    $temp = $database["orders"][$login][0];
+    $database["orders"][$login][0] = $database["orders"][$login][$order];
+    $database["orders"][$login][$order] = $temp;
+    array_shift($database["products"][$login]);
+    array_values($database["products"][$login]);
+    if (!file_put_contents(ORDER_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        return false;
+    return true;
+}
+function delete_all_user_orders ($login)
+{
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_order_database();
+    if (!isset($database["orders"][$login]))
+        return false;
+    unset($database["orders"][$login]);
     if (!file_put_contents(ORDER_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
     return true;
