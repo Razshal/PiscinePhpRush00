@@ -288,18 +288,17 @@ a:hover {
 }
 
 footer {
-  clear: both;
-  position: i;
   color: #fff;
+  position: fixed;
   font-family: 'Montserrat', sans-serif;
   background-color: #2b2f3a;
   text-align: center;
-  height: 40px;
-  bottom: 0;
+  height: 45px;
   width: 1400px;
+  bottom: 0;
   padding-bottom: 5px;
+  overflow: hidden;
 }
-
 
 /*******************************************************/
 /************************ ADUI *************************/
@@ -493,5 +492,10 @@ figure img {
 	font-size: 15px;
 	color: #fff;
 	border-radius: 5px;
->>>>>>> design
+}
+
+#formalities {
+	width: 100%;
+    display: inline-block;
+    text-align: center;
 }

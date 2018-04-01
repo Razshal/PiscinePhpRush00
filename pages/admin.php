@@ -56,10 +56,10 @@ if ($_SESSION["admin"] === 1)
         <?php include "../site_structure/sidemenu.php"; ?>
         <div id="content">
         <h1>Users</h1>
-        <table>
+        <table id="shop">
             <tr>
-                <th>Name</th>
-                <th>IsAdmin</th>
+                <th style="width: 40%;">Name</th>
+                <th style="width: 29%;">IsAdmin</th>
                 <th></th>
             </tr>
             <?php foreach ($users["users"] as $user)
@@ -70,9 +70,9 @@ if ($_SESSION["admin"] === 1)
                 <td><?php echo $user["isadmin"] ?></td>
                 <td>
                     <form method="post" action="admin.php" name="admin.php">
-                        <input type="submit" name="action_user" value="delete">
-                        <input type="submit" name="action_user" value="make_admin">
-                        <input type="submit" name="action_user" value="unmake_admin">
+                        <input type="submit" id="submit" name="action_user" value="delete">
+                        <input type="submit" id="submit" name="action_user" value="make_admin">
+                        <input type="submit" id="submit" name="action_user" value="unmake_admin">
                         <input type="hidden" name="user" value="<?php echo $user["login"] ?>">
                     </form>
                 </td>
@@ -85,12 +85,13 @@ if ($_SESSION["admin"] === 1)
             Identifiant: <input type="text" name="login"/>
             <br/>
             Mot de passe: <input type="password" name="passwd"/>
-            <input type="submit" name="submit" value="OK"/>
+            <input type="submit" id="submit" name="submit" value="OK"/>
         </form>
-        <h1>categories</h1>
-        <table>
+        <h1>Categories</h1>
+        <table id="shop">
             <tr>
-                <th>Name</th>
+                <th style="width: 100%;">Name</th>
+                <th style="width: 100%;">Action</th>
             </tr>
             <?php foreach ($categories["categories"] as $item)
             {
@@ -99,37 +100,56 @@ if ($_SESSION["admin"] === 1)
                 <td><?php echo $item["name"] ?></td>
                 <td>
                     <form method="post" action="admin.php" name="admin.php">
-                        <input type="submit" name="action_cat" value="delete">
+                        <input type="submit" id="submit" name="action_cat" value="delete">
                         <input type="hidden" name="cat" value="<?php echo $item["name"] ?>">
                     </form>
                 </td>
                 </tr><?php
             } ?>
             <form method="post" action="admin.php" name="admin.php">
-                <input type="submit" name="action_cat" value="add">
+                <input type="submit" id="submit" name="action_cat" value="add">
                 <input type="text" name="cat" value="">
             </form>
         </table>
 
         <h1>Products</h1>
-        <table>
+        <form method="post" action="admin.php" name="admin.php">
+        <table id="shop">
             <tr>
+                <th style="width: 20%;">Name</th>
+                <th style="width: 20%;">Categories comma separated</th>
+                <th>Price</th>
                 <th>Image</th>
-                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="name" value=""></td>
+                <td><input type="text" name="categories" value=""></td>
+                <td><input type="number" name="price" value=""></td>
+                <td><input type="text" name="image" value=""></td>
+                <td><input type="submit" id="submit" name="action_prod" value="add"></td>
+            </tr>
+        </table>
+        </form>
+        <table id="shop">
+            <tr>
+                <th style="width: 20%;">Image</th>
+                <th style="width: 20%;">Name</th>
                 <th>Categories</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
             <?php foreach ($products["products"] as $item)
             {
                 ?>
                 <tr>
-                <td><img src="<?php echo $item["image"] ?>"/></td>
+                <td><img id="thumb" src="<?php echo $item["image"] ?>"/></td>
                 <td><?php echo $item["name"] ?></td>
                 <td><?php echo implode(",", $item["category"]); ?></td>
-                <td><?php echo $item["price"] ?></td>
+                <td><?php echo $item["price"] ?>&euro;</td>
                 <td>
                     <form method="post" action="admin.php" name="admin.php">
-                        <input type="submit" name="action_prod" value="delete">
+                        <input type="submit" id="submit" name="action_prod" value="delete">
                         <input type="hidden" name="prod" value="<?php echo $item["name"] ?>">
                     </form>
                 </td>
@@ -137,25 +157,9 @@ if ($_SESSION["admin"] === 1)
             } ?>
         </table>
         <br/>
-        <form method="post" action="admin.php" name="admin.php">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Categories comma separated</th>
-                <th>Price</th>
-                <th>Image</th>
-            </tr>
-            <tr>
-                <td><input type="text" name="name" value=""></td>
-                <td><input type="text" name="categories" value=""></td>
-                <td><input type="number" name="price" value=""></td>
-                <td><input type="text" name="image" value=""></td>
-                <td><input type="submit" name="action_prod" value="add"></td>
-            </tr>
-        </table>
-        </form>
+        
 
-
+</div>
         <?php include "../site_structure/footer.php"; ?>
     </body>
     </html>

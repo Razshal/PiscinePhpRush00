@@ -42,13 +42,13 @@ if (isset($_GET["categories"]))
                     </option><?php
                 }?>
             </select>
-            <input type="submit" value="Filter">
+            <input type="submit" id="submit" value="Filter">
         </form>
 
         <table id="shop">
             <tr>
                 <th style="width: 20%;">Image</th>
-                <th style="width: 40%;"">Name</th>
+                <th style="width: 40%;">Name</th>
                 <th>Price</th>
                 <th>Add to basket</th>
             </tr>
@@ -118,9 +118,9 @@ if (isset($_GET["categories"]))
                 }
             }
                 ?>
-            <form method="post" action="buy.php" name="buy.php">
-                <input type="submit" name="page" value="previous"/>
-                <input type="submit" name="page" value="next"/>
+            <form id="formalities" method="post" action="buy.php" name="buy.php">
+                <input type="submit" id="submit" name="page" value="previous"/>
+                <input type="submit" id="submit" name="page" value="next"/>
                 <input type="hidden" name="page_num" value="<?php echo $page_num ?>"/>
             </form>
         </table>
