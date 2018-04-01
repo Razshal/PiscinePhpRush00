@@ -61,8 +61,8 @@ if ($_SESSION["admin"] === 1)
         <h1>Users</h1>
         <table id="shop">
             <tr>
-                <th style="width: 20%;">Name</th>
-                <th>IsAdmin</th>
+                <th style="width: 42%;">Name</th>
+                <th style="width: 27%;">IsAdmin</th>
                 <th></th>
             </tr>
             <?php foreach ($users["users"] as $user)
@@ -73,9 +73,9 @@ if ($_SESSION["admin"] === 1)
                 <td><?php echo $user["isadmin"] ?></td>
                 <td>
                     <form method="post" action="admin.php" name="admin.php">
-                        <input type="submit" name="action_user" value="delete">
-                        <input type="submit" name="action_user" value="make_admin">
-                        <input type="submit" name="action_user" value="unmake_admin">
+                        <input type="submit" id="submit" name="action_user" value="delete">
+                        <input type="submit" id="submit" name="action_user" value="make_admin">
+                        <input type="submit" id="submit" name="action_user" value="unmake_admin">
                         <input type="hidden" name="user" value="<?php echo $user["login"] ?>">
                     </form>
                 </td>
@@ -87,12 +87,12 @@ if ($_SESSION["admin"] === 1)
             Identifiant: <input type="text" name="login"/>
             <br/>
             Mot de passe: <input type="password" name="passwd"/>
-            <input type="submit" name="submit" value="OK"/>
+            <input type="submit" id="submit" name="submit" value="OK"/>
         </form>
-        <h1>categories</h1>
-        <table>
+        <h1>Categories</h1>
+        <table id="shop">
             <tr>
-                <th>Name</th>
+                <th style="width: 42%;">Name</th>
             </tr>
             <?php foreach ($categories["categories"] as $item)
             {
@@ -102,8 +102,8 @@ if ($_SESSION["admin"] === 1)
                     <td>
                         <form method="post" action="admin.php" name="admin.php">
                             <input type="text" name="cat" value="<?php echo $item["name"] ?>">
-                            <input type="submit" name="action_cat" value="update">
-                            <input type="submit" name="action_cat" value="delete">
+                            <input type="submit" id="submit" name="action_cat" value="update">
+                            <input type="submit" id="submit" name="action_cat" value="delete">
                             <input type="hidden" name="oldname" value="<?php echo $item["name"] ?>">
                         </form>
                     </td>
@@ -118,24 +118,25 @@ if ($_SESSION["admin"] === 1)
             </form>
         </table>
         <h1>Products</h1>
-        <table>
+        <table id="shop">
             <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Categories</th>
+                <th style="width: 20%;">Image</th>
+                <th style="width: 20%;">Name</th>
+                <th style="width: 20%;">Categories</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
             <?php foreach ($products["products"] as $item)
             {
                 ?>
                 <tr>
-                <td><img src="<?php echo $item["image"] ?>"/></td>
+                <td><img id="thumb" src="<?php echo $item["image"] ?>"/></td>
                 <td><?php echo $item["name"] ?></td>
                 <td><?php if (is_array($item["category"])) echo implode(",", $item["category"]); ?></td>
                 <td><?php echo $item["price"] ?></td>
                 <td>
                     <form method="post" action="admin.php" name="admin.php">
-                        <input type="submit" name="action_prod" value="delete">
+                        <input type="submit" id="submit" name="action_prod" value="delete">
                         <input type="hidden" name="prod" value="<?php echo $item["name"] ?>">
                     </form>
                 </td>
