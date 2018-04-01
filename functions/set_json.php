@@ -45,7 +45,6 @@ function delete_user ($login)
 }
 function alter_user($login, $oldpw, $newpw)
 {
-    $done = false;
     if (!file_exists(PATH))
         mkdir(PATH);
     $database = get_users_database();
@@ -56,20 +55,16 @@ function alter_user($login, $oldpw, $newpw)
             if ($user["passwd"] === hash_pw($oldpw))
             {
                 $user["passwd"] = hash_pw($newpw);
-                $done = true;
                 if (!file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
                     return false;
                 break;
             }
         }
     }
-    if ($done === false
-        || !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
-        return false;
     return true;
 }
 
-function create_product ($name, $category, $price, $image, $id)
+function create_product ($name, $category, $price, $image)
 {
     if (!file_exists(PATH))
         mkdir(PATH);
@@ -90,7 +85,7 @@ function delete_product ($name)
     $done = false;
     if (!file_exists(PATH))
         mkdir(PATH);
-    $database = get_users_database();
+    $database = get_product_database();
     foreach ($database["products"] as &$prod)
     {
         if ($prod["name"] === $name)
@@ -105,8 +100,30 @@ function delete_product ($name)
     }
     array_values($database["products"]);
     if ($done === false ||
-        !file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        !file_put_contents(PRODUCT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
+    return true;
+}
+function alter_product($name, $category, $price, $image)
+{
+    $done = false;
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_product_database();
+    foreach ($database["products"] as &$item)
+    {
+        if ($item["name"] === $name)
+        {
+            $item["name"] = $name;
+            $item["price"] = $price;
+            $item["image"] = $price;
+            $item["category"] = $category;
+            if ($done === false
+                || !file_put_contents(PRODUCT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+                return false;
+            break;
+        }
+    }
     return true;
 }
 
