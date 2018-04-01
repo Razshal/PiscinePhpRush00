@@ -27,6 +27,24 @@ if ($_SESSION["admin"] === 1)
         if ($_POST["action_cat"] === "add")
             create_category($_POST["cat"]);
     }
+    else if (isset($_POST["action_prod"]) && $_POST["action_prod"] != ""
+        && isset($_POST["prod"]))
+    {
+        if ($_POST["action_prod"] === "delete")
+            delete_product($_POST["prod"]);
+        if ($_POST["action_prod"] === "add" && isset($_POST["name"]) && isset($_POST["image"])
+            && isset($_POST["price"]) && isset($_POST["categories"]) && is_numeric($_POST["price"]))
+        {
+            $cat_array = explode(",", $_POST["categories"]);
+            foreach ($cat_array as $cat)
+            {
+                if (!get_category($cat))
+                    create_category($cat);
+            }
+            create_product($_POST["name"], $cat_array, $_POST["price"], $_POST["image"]);
+        }
+
+    }
     $users = get_users_database();
     $products = get_product_database();
     $categories = get_categories_database();
@@ -39,7 +57,7 @@ if ($_SESSION["admin"] === 1)
             <tr>
                 <th>Name</th>
                 <th>IsAdmin</th>
-                <th>Action</th>
+                <th></th>
             </tr>
             <?php foreach ($users["users"] as $user)
             {
@@ -89,6 +107,50 @@ if ($_SESSION["admin"] === 1)
                 <input type="text" name="cat" value="">
             </form>
         </table>
+
+        <h1>Products</h1>
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Categories</th>
+                <th>Price</th>
+            </tr>
+            <?php foreach ($products["products"] as $item)
+            {
+                ?>
+                <tr>
+                <td><img src="<?php echo $item["image"] ?>"/></td>
+                <td><?php echo $item["name"] ?></td>
+                <td><?php echo implode(",", $item["category"]); ?></td>
+                <td><?php echo $item["price"] ?></td>
+                <td>
+                    <form method="post" action="admin.php" name="admin.php">
+                        <input type="submit" name="action_prod" value="delete">
+                        <input type="hidden" name="prod" value="<?php echo $item["name"] ?>">
+                    </form>
+                </td>
+                </tr><?php
+            } ?>
+        </table>
+        <br/>
+        <form method="get" action="admin.php" name="admin.php">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Categories comma separated</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="name" value=""></td>
+                <td><input type="text" name="categories" value=""></td>
+                <td><input type="number" name="price" value=""></td>
+                <td><input type="text" name="image" value=""></td>
+                <td><input type="submit" name="action_prod" value="add"></td>
+            </tr>
+        </table>
+        </form>
 
 
         <?php include "../site_structure/footer.php"; ?>
