@@ -25,10 +25,7 @@ if ($_SESSION["admin"] === 1)
         if ($_POST["action_cat"] === "update" && isset($_POST["oldname"]))
             alter_category($_POST["oldname"], $_POST["cat"]);
         if ($_POST["action_cat"] === "add")
-        {
-            var_dump($_POST["cat"]);
             create_category($_POST["cat"]);
-        }
     }
     else if (isset($_POST["action_prod"]) && $_POST["action_prod"] != "")
     {
@@ -46,8 +43,6 @@ if ($_SESSION["admin"] === 1)
             }
             create_product($_POST["name"], $cat_array, $_POST["price"], $_POST["image"]);
         }
-        else
-            var_dump($_POST);
     }
     $users = get_users_database();
     $products = get_product_database();

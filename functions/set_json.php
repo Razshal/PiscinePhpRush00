@@ -192,7 +192,6 @@ function delete_category ($category)
     $prod_database = get_product_database();
     foreach ($database["categories"] as &$cat)
     {
-        var_dump($cat);
         if ($cat["name"] === $category)
         {
             $tempo = $database["categories"][0];
@@ -207,7 +206,6 @@ function delete_category ($category)
                 {
                     if ($catarray === $category)
                     {
-                        var_dump($catarray);
                         $temp = $prod["category"][0];
                         $prod["category"][0] = $catarray;
                         $catarray = $temp;
