@@ -85,4 +85,28 @@ function get_order_database()
         return $array;
     }
 }
+function get_order($login, $order_num)
+{
+    $database = get_order_database();
+    foreach ($database["categories"] as $cat)
+    {
+        if ($cat === $login)
+        {
+            if (isset($cat[$login][$order_num]) && !empty($cat[$login][$order_num]))
+                return $cat[$login][$order_num];
+            else
+                return NULL;
+        }
+    }
+    return NULL;
+}
+function get_client_orders($login)
+{
+    $database = get_order_database();
+    $orders = $database["orders"][$login];
+    if (isset($orders) && !empty($orders))
+        return $orders;
+    else
+        return NULL;
+}
 ?>

@@ -91,7 +91,7 @@ function delete_product ($name)
     return true;
 }
 
-function create_category ($category, $user)
+function create_category ($category)
 {
     if (!file_exists(PATH))
         mkdir(PATH);
@@ -104,6 +104,18 @@ function create_category ($category, $user)
 }
 
 function create_order ($login, $basket)
+{
+    if (!isset($basket) || empty($basket))
+        return false;
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_order_database();
+    $database["orders"][$login][] = $basket;
+    if (!file_put_contents(ORDER_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+        return false;
+    return true;
+}
+function delete_order ($login, $order)
 {
     if (!isset($basket) || empty($basket))
         return false;
