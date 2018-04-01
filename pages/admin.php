@@ -23,7 +23,7 @@ if ($_SESSION["admin"] === 1)
     {
         if ($_POST["action_cat"] === "delete")
         {
-            delete_ca
+            delete_ca;
         }
     }
     $users = get_users_database();
