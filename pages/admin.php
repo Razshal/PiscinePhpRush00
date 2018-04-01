@@ -18,7 +18,6 @@ if ($_SESSION["admin"] === 1)
         if ($_POST["action_user"] === "unmake_admin")
             make_admin_or_not($_POST["user"], 0);
     }
-
     else if (isset($_POST["action_cat"]) && $_POST["action_cat"] != ""
         && isset($_POST["cat"]))
     {
@@ -27,14 +26,14 @@ if ($_SESSION["admin"] === 1)
         if ($_POST["action_cat"] === "add")
             create_category($_POST["cat"]);
     }
-    else if (isset($_POST["action_prod"]) && $_POST["action_prod"] != ""
-        && isset($_POST["prod"]))
+    else if (isset($_POST["action_prod"]) && $_POST["action_prod"] != "")
     {
         if ($_POST["action_prod"] === "delete")
             delete_product($_POST["prod"]);
         if ($_POST["action_prod"] === "add" && isset($_POST["name"]) && isset($_POST["image"])
             && isset($_POST["price"]) && isset($_POST["categories"]) && is_numeric($_POST["price"]))
         {
+            echo " ok";
             $cat_array = explode(",", $_POST["categories"]);
             foreach ($cat_array as $cat)
             {
@@ -43,6 +42,8 @@ if ($_SESSION["admin"] === 1)
             }
             create_product($_POST["name"], $cat_array, $_POST["price"], $_POST["image"]);
         }
+        else
+            var_dump($_POST);
 
     }
     $users = get_users_database();
@@ -134,7 +135,7 @@ if ($_SESSION["admin"] === 1)
             } ?>
         </table>
         <br/>
-        <form method="get" action="admin.php" name="admin.php">
+        <form method="post" action="admin.php" name="admin.php">
         <table>
             <tr>
                 <th>Name</th>
