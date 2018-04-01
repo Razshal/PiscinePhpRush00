@@ -26,7 +26,9 @@
         },
         {
             "name": "Nintendo Switch",
-            "category": ["Jeu video", "Manette"],
+            "category": [
+                "Console"
+            ],
             "price": "220",
             "image": "https:\/\/cdn.vox-cdn.com\/thumbor\/u1VlRKo9Snw3s8g-7tJrOAA4XjA=\/0x0:2040x1360\/1200x800\/filters:focal(857x517:1183x843)\/cdn.vox-cdn.com\/uploads\/chorus_image\/image\/59194389\/jbareham_170221_1475_0075.0.jpg"
         },

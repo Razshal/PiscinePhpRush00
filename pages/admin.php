@@ -94,20 +94,24 @@ if ($_SESSION["admin"] === 1)
             </tr>
             <?php foreach ($categories["categories"] as $item)
             {
-                ?>
-                <tr>
-                <td><?php echo $item["name"] ?></td>
-                <td>
-                    <form method="post" action="admin.php" name="admin.php">
-                        <input type="submit" name="action_cat" value="delete">
-                        <input type="hidden" name="cat" value="<?php echo $item["name"] ?>">
-                    </form>
-                </td>
-                </tr><?php
+                if (is_array($item)) {
+                    ?>
+                    <tr>
+                    <td><?php echo $item["name"] ?></td>
+                    <td>
+                        <form method="post" action="admin.php" name="admin.php">
+                            <input type="submit" name="action_cat" value="delete">
+                            <input type="hidden" name="cat" value="<?php echo $item["name"] ?>">
+                        </form>
+                    </td>
+                    </tr><?php
+                }
             } ?>
             <form method="post" action="admin.php" name="admin.php">
-                <input type="submit" name="action_cat" value="add">
-                <input type="text" name="cat" value="">
+                <tr>
+                    <td><input type="text" name="cat" value=""></td>
+                    <td><input type="submit" name="action_cat" value="add"></td>
+                </tr>
             </form>
         </table>
 
@@ -125,7 +129,7 @@ if ($_SESSION["admin"] === 1)
                 <tr>
                 <td><img src="<?php echo $item["image"] ?>"/></td>
                 <td><?php echo $item["name"] ?></td>
-                <td><?php echo implode(",", $item["category"]); ?></td>
+                <td><?php if (is_array($item["category"])) echo implode(",", $item["category"]); ?></td>
                 <td><?php echo $item["price"] ?></td>
                 <td>
                     <form method="post" action="admin.php" name="admin.php">
