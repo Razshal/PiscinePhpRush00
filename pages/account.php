@@ -3,11 +3,19 @@ include_once "../site_structure/head.php";
 include_once "../functions/set_json.php";
 include_once "../functions/get_json.php";
 $user_has_been_deleted = true;
+$altered_user = false;
+
 if (auth($_SESSION["logged_on_user"], $_POST["passwd"]) === true
     && $_POST["submit"] === "Delete my account" )
 {
     $user_has_been_deleted = delete_user($_SESSION["logged_on_user"]);
     $_SESSION["logged_on_user"] = "";
+}
+if (auth($_SESSION["logged_on_user"], $_POST["oldpw"]) === true
+    && isset($_POST["newpw"]) && $_POST["newpw"] != ""
+    && $_POST["submit"] === "Change Password" )
+{
+    $altered_user = alter_user($_SESSION["logged_on_user"], $_POST["oldpw"], $_POST["newpw"]);
 }
 $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"] != "");
 ?>
@@ -61,7 +69,11 @@ $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"
                 </table><?php
                 }
             }
-        }?>
+        }
+        if ($altered_user)
+            echo "<h3 style='color: red'>Password has been modified</h3>";
+        ?>
+
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

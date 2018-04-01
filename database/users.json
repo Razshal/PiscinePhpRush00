@@ -5,12 +5,6 @@
             "passwd": "bb80065713e635fad64b78fa7602d320ee6d029dae9421b4a868b3b1ea26aa0bb21cadd3a726a135719fe82d763b40888456e21f507072d967f048486fdc2cdf",
             "isadmin": 0,
             "orders": []
-        },
-        {
-            "login": "b",
-            "passwd": "b0e869f9707a0ceb019795aa8b2c2b06fbee8dc4207da822828b1a1348e9eeb9b38eb12517c150cbce3cd653c09d3314c7dfbf53a54358b97f1d4c0f6b68103f",
-            "isadmin": 0,
-            "orders": []
         }
     ]
 }

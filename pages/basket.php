@@ -38,11 +38,10 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
             $success = update_basket($_POST["product"], $_POST["qtty"]);
     }
 }
-
 ?>
 <html>
     <body>
-        <?php include "../site_structure/header.php"; ?>
+        <?php include "../site_structure/header.php";?>
         <h1>Your Basket</h1>
         <table>
             <tr>

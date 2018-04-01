@@ -43,7 +43,7 @@ function delete_user ($login)
         return false;
     return true;
 }
-function alter_user($login, $password)
+function alter_user($login, $oldpw, $newpw)
 {
     $done = false;
     if (!file_exists(PATH))
@@ -53,9 +53,14 @@ function alter_user($login, $password)
     {
         if ($user["login"] === $login)
         {
-            $user["passwd"] = hash_pw($password);
-            $done = true;
-            break;
+            if ($user["passwd"] === hash_pw($oldpw))
+            {
+                $user["passwd"] = hash_pw($newpw);
+                $done = true;
+                if (!file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+                    return false;
+                break;
+            }
         }
     }
     if ($done === false
