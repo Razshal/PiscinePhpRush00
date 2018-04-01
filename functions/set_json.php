@@ -91,7 +91,7 @@ function delete_product ($name)
     return true;
 }
 
-function create_category ($category)
+function create_category ($category, $user)
 {
     if (!file_exists(PATH))
         mkdir(PATH);

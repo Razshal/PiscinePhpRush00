@@ -16,12 +16,12 @@ function get_users_database()
         return $array;
     }
 }
-function get_user($name)
+function get_user($login)
 {
     $database = get_users_database();
     foreach ($database["users"] as $user)
     {
-        if ($user === $name)
+        if ($user["login"] === $login)
             return $user;
     }
     return NULL;
