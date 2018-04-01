@@ -3,6 +3,7 @@ define("PATH", "../database");
 define("USERS_DATABASE", PATH . "/users.json");
 define("PRODUCT_DATABASE", PATH . "/products.json");
 define("CAT_DATABASE", PATH . "/categories.json");
+define("ORDER_DATABASE", PATH . "/orders.json");
 
 function get_users_database()
 {
@@ -17,10 +18,7 @@ function get_users_database()
 }
 function get_user($name)
 {
-    if (file_exists(USERS_DATABASE))
-        $database = json_decode(file_get_contents(USERS_DATABASE), true);
-    else
-        return NULL;
+    $database = get_users_database();
     foreach ($database["users"] as $user)
     {
         if ($user === $name)
@@ -67,15 +65,24 @@ function get_categories_database()
 }
 function get_category($name)
 {
-    if (file_exists(CAT_DATABASE))
-        $database = json_decode(file_get_contents(CAT_DATABASE), true);
-    else
-        return NULL;
-    foreach ($database["products"] as $cat)
+    $database = get_categories_database();
+    foreach ($database["categories"] as $cat)
     {
         if ($cat === $name)
             return $cat;
     }
     return NULL;
+}
+
+function get_order_database()
+{
+    if (file_exists(ORDER_DATABASE))
+        return json_decode(file_get_contents(ORDER_DATABASE),true);
+    else
+    {
+        $array = array();
+        $array["orders"] = array();
+        return $array;
+    }
 }
 ?>

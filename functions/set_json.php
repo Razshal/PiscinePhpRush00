@@ -43,7 +43,12 @@ function delete_user ($login)
         return false;
     return true;
 }
+/*
+function modif_user($login, $password)
+{
 
+}
+*/
 function create_product ($name, $category, $price, $image, $id)
 {
     if (!file_exists(PATH))
@@ -90,7 +95,7 @@ function create_category ($category)
 {
     if (!file_exists(PATH))
         mkdir(PATH);
-    $database = get_product_database();
+    $database = get_categories_database();
     $list = array("name" => $category);
     $database["categories"][] = $list;
     if (!file_put_contents(CAT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
@@ -98,61 +103,16 @@ function create_category ($category)
     return true;
 }
 
-function add_to_basket($product)
+function create_order ()
 {
-    $real_product = get_product($product);
-    if (!isset($_SESSION["basket"]))
-        $_SESSION["basket"] = array();
-    foreach ($_SESSION["basket"] as &$item)
-    {
-       if ($item["name"] === $product)
-       {
-           if (!isset($item["qtty"]))
-               $item["qtty"] = 1;
-           else
-               $item["qtty"]++;
-           return true;
-       }
-    }
-    if ($real_product != NULL)
-    {
-        $real_product["qtty"] = 1;
-        $_SESSION["basket"][] = $real_product;
-        return true;
-    }
-    else
+    if (!isset($_SESSION["basket"]) || empty($_SESSION["basket"]))
         return false;
-}
-function update_basket($product, $qtty)
-{
-    if (!isset($_SESSION["basket"]))
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_order_database();
+    $database["orders"][$_SESSION["logged_in_user"]][] = $_SESSION["basket"];
+    if (!file_put_contents(ORDER_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
-    foreach ($_SESSION["basket"] as &$item)
-    {
-        if ($item["name"] === $product)
-        {
-            $item["qtty"] = $qtty;
-            return true;
-        }
-    }
-    return false;
-}
-function delete_from_basket($product)
-{
-    if (!isset($_SESSION["basket"]))
-        return false;
-    foreach ($_SESSION["basket"] as &$item)
-    {
-        if (isset($item["name"]) && $item["name"] === $product)
-        {
-            $temp = $_SESSION["basket"][0];
-            $_SESSION["basket"][0] = $item;
-            $item = $temp;
-            array_shift($_SESSION["basket"]);
-            array_values($_SESSION["basket"]);
-            return true;
-        }
-    }
-    return false;
+    return true;
 }
 ?>

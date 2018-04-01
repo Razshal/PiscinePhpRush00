@@ -2,6 +2,7 @@
 include "../site_structure/head.php";
 include_once "../functions/get_json.php";
 include_once "../functions/set_json.php";
+include_once "../functions/set_basket.php";
 
 if (isset($_POST["submit"]) && $_POST["submit"] === "add"
     && isset($_POST["product"]) && $_POST["product"] != "")

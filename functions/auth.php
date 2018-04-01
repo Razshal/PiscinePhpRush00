@@ -19,6 +19,6 @@ function auth ($login, $passwd)
                 return (false);
         }
     }
-    return (false);
+    return false;
 }
 ?>

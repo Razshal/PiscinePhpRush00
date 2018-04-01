@@ -1,8 +1,23 @@
 <?php
-include "../site_structure/head.php";
 include_once "../functions/set_json.php";
+include_once "../functions/set_basket.php";
+session_start();
 
+if (isset($_POST["action"]) && $_POST["action"] === "Purchase"
+    && isset($_SESSION["basket"]) && !empty($_SESSION["basket"]))
+{
+    if (!isset($_SESSION["logged_on_user"]) || $_SESSION["logged_on_user"] == "")
+        header("location: /pages/login.php");
+    else if (create_order() === true)
+    {
+        destroy_basket();
+        header("location: /pages/success_order.php");
+    }
+}
+
+include "../site_structure/head.php";
 $success = true;
+
 if (isset($_POST["action"]) && $_POST["action"] === "Delete"
     && isset($_POST["product"]) && $_POST["product"] != ""
     && isset($_SESSION["basket"]))
@@ -18,10 +33,11 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
     {
         if ($_POST["qtty"] == 0)
             $success = delete_from_basket($_POST["product"]);
-        else
+        else if ($_POST["qtty"] > 0)
             $success = update_basket($_POST["product"], $_POST["qtty"]);
     }
 }
+
 ?>
 <html>
     <body>
@@ -54,7 +70,6 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
                     </td>
                     <td>
                         <form method="post" action="basket.php" name="basket.php">
-
                             <input type="submit" name="action" value="Delete">
                             <input type="hidden" name="product" value="<?php echo $item["name"];?>">
                         </form>
@@ -66,6 +81,11 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
         </table>
         <h2>Total : <?php echo $total;?></h2>
         <?php if ($success === false) echo "<h3>Error</h3>";?>
+        <form method="post" action="basket.php" name="basket.php">
+            <input type="submit" name="action" value="Purchase">
+        </form>
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>
+
+<?php unset($_POST); ?>
