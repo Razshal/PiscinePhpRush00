@@ -50,7 +50,6 @@ if (isset($_GET["categories"]))
                 <th style="width: 20%;">Image</th>
                 <th style="width: 40%;">Name</th>
                 <th style="width: 20%;">Cat</th>
-                <th style="width: 40%;"">Name</th>
                 <th>Price</th>
                 <th>Add to basket</th>
             </tr>
