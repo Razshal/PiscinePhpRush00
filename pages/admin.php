@@ -7,6 +7,14 @@ $users = get_users_database();
 $products = get_product_database();
 $categories = get_categories_database();
 
+if (isset($_POST["action_user"]) && $_POST["action_user"] != "")
+{
+    if ($_POST["action_user"] === "delete")
+    {
+
+    }
+}
+
 ?>
 
 <html>
@@ -14,11 +22,11 @@ $categories = get_categories_database();
         <?php include "../site_structure/header.php"; ?>
 
         <h1>Users</h1>
-        <form method="post" action="admin.php" name="admin.php">
             <table>
                 <tr>
                     <th>Name</th>
                     <th>IsAdmin</th>
+                    <th>Action</th>
                 </tr>
                 <?php foreach ($users["users"] as $user)
                 {
@@ -26,11 +34,22 @@ $categories = get_categories_database();
                 <tr>
                     <td><?php echo $user["login"]?></td>
                     <td><?php echo $user["isadmin"]?></td>
+                    <td>
+                        <form method="get" action="admin.php" name ="admin.php">
+                            <input type="submit" name="action_user" value="delete">
+                            <input type="hidden" name="user" value="<?php echo $user["login"]?>">
+                        </form>
+                    </td>
+
                 </tr><?php
                 }?>
-
-
             </table>
+        <h1>Add User</h1>
+        <form method="post" action="signed.php" name="signed.php">
+            Identifiant: <input type="text" name="login"/>
+            <br/>
+            Mot de passe: <input type="password" name="passwd"/>
+            <input type="submit" name="submit" value="OK"/>
         </form>
 
         <?php include "../site_structure/footer.php"; ?>
