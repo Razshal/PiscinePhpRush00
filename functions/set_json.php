@@ -54,11 +54,28 @@ function alter_user($login, $oldpw, $newpw, $isadmin = 0)
             if ($user["passwd"] === hash_pw($oldpw))
             {
                 $user["passwd"] = hash_pw($newpw);
+                $user["isadmin"] = $isadmin;
                 if (!file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
                     return false;
                 break;
             }
+        }
+    }
+    return true;
+}
+function make_admin_or_not($login, $isadmin = 0)
+{
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_users_database();
+    foreach ($database["users"] as &$user)
+    {
+        if ($user["login"] === $login)
+        {
             $user["isadmin"] = $isadmin;
+            if (!file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+                return false;
+            break;
         }
     }
     return true;

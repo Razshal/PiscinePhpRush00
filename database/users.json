@@ -1,26 +1,15 @@
 {
     "users": [
         {
-            "login": "test",
-            "passwd": "b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6",
-            "isadmin": 0,
-            "orders": []
-        },
-        {
-            "login": "t",
-            "passwd": "bb80065713e635fad64b78fa7602d320ee6d029dae9421b4a868b3b1ea26aa0bb21cadd3a726a135719fe82d763b40888456e21f507072d967f048486fdc2cdf",
-            "isadmin": 0,
-            "orders": []
-        },
-        {
             "login": "admin",
             "passwd": "6a4e012bd9583858a5a6fa15f58bd86a25af266d3a4344f1ec2018b778f29ba83be86eb45e6dc204e11276f4a99eff4e2144fbe15e756c2c88e999649aae7d94",
             "isadmin": 1
         },
         {
-            "login": "a",
-            "passwd": "8aca2602792aec6f11a67206531fb7d7f0dff59413145e6973c45001d0087b42d11bc645413aeff63a42391a39145a591a92200d560195e53b478584fdae231a",
-            "isadmin": 0
+            "login": "test",
+            "passwd": "b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6",
+            "isadmin": 0,
+            "orders": []
         }
     ]
 }
