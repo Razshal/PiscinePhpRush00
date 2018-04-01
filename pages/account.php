@@ -22,6 +22,8 @@ $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
+        <?php include_once "../site_structure/sidemenu.php"; ?>
+        <div id="content">
         <?php if ($logged_user === true || $user_has_been_deleted === false)
         {?>
         <h1>Hello <?php echo $_SESSION["logged_on_user"] ?></h1>
@@ -73,7 +75,7 @@ $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"
         if ($altered_user)
             echo "<h3 style='color: red'>Password has been modified</h3>";
         ?>
-
+        </div>
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

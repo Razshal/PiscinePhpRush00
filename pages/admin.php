@@ -53,6 +53,8 @@ if ($_SESSION["admin"] === 1)
     <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
+        <?php include "../site_structure/sidemenu.php"; ?>
+        <div id="content">
         <h1>Users</h1>
         <table>
             <tr>

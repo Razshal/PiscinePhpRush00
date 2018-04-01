@@ -42,16 +42,18 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
 <html>
     <body>
         <?php include "../site_structure/header.php";?>
+        <?php include "../site_structure/sidemenu.php"; ?>
+        <div id="content">
         <h1>Your Basket</h1>
 
         <?php
         $total = 0;
         if (isset($_SESSION["basket"]) && !empty($_SESSION["basket"]))
         {?>
-        <table>
+        <table id="shop">
             <tr>
-                <th>Image</th>
-                <th>Name</th>
+                <th style="width: 20%;">Image</th>
+                <th style="width: 40%;"">Name</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Action</th>
@@ -62,19 +64,19 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
                 $total+= $item["price"] * $item["qtty"];
             ?>
                 <tr>
-                    <td><img src="<?php echo $item["name"];?>"/></td>
+                    <td><img id="thumb" src="<?php echo $item["image"];?>"/></td>
                     <td><?php echo $item["name"];?></td>
-                    <td><?php echo $item["price"];?></td>
+                    <td><?php echo $item["price"];?>&euro;</td>
                     <td>
                         <form method="post" action="basket.php" name="basket.php">
                             <input type="number" value="<?php echo $item["qtty"];?>" name="qtty">
                             <input type="hidden" name="product" value="<?php echo $item["name"];?>">
-                            <input type="submit" name="action" value="Update">
+                            <input type="submit" id="update" name="action" value="Update">
                         </form>
                     </td>
                     <td>
                         <form method="post" action="basket.php" name="basket.php">
-                            <input type="submit" name="action" value="Delete">
+                            <input type="submit" id="submit" name="action" value="Delete">
                             <input type="hidden" name="product" value="<?php echo $item["name"];?>">
                         </form>
                     </td>
@@ -90,10 +92,10 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
             <?php
         }
         else
-            echo "<h2>Nothing to display</h2>"?>
+            echo "</br><i><h2>Nothing to display</h2></i>"?>
         <?php if ($success === false) echo "<h3>Error</h3>";?>
 
-
+        </div>
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

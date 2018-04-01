@@ -49,6 +49,22 @@
                     "image": 0,
                     "qtty": 4
                 }
+            ],
+            [
+                {
+                    "name": "Assasin's Creed Origins",
+                    "category": "1",
+                    "price": "150",
+                    "image": "https:\/\/img.game.co.uk\/ml2\/6\/9\/5\/7\/695779_ps4_b.png",
+                    "qtty": 1
+                },
+                {
+                    "name": "Playstation 4",
+                    "category": "2",
+                    "price": "350",
+                    "image": "https:\/\/cdn.idealo.com\/folder\/Product\/4056\/4\/4056425\/s4_produktbild_gross\/sony-playstation-4-ps4.png",
+                    "qtty": 3
+                }
             ]
         ]
     }
