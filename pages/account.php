@@ -53,7 +53,6 @@ $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"
                 <table>
                     <tr>
                         <th>Name</th>
-                        <th>Cat</th>
                         <th>Price</th>
                         <th>Qtty</th>
                     </tr>

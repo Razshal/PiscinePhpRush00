@@ -22,10 +22,7 @@ if ($_SESSION["admin"] === 1)
         && isset($_POST["cat"]))
     {
         if ($_POST["action_cat"] === "delete")
-        {
-            var_dump(delete_category($_POST["cat"]));
-
-        }
+            delete_category($_POST["cat"]);
         if ($_POST["action_cat"] === "add")
             create_category($_POST["cat"]);
     }

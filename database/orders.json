@@ -31,6 +31,24 @@
                     "image": 0,
                     "qtty": 1
                 }
+            ],
+            [
+                {
+                    "name": "A screen",
+                    "category": [],
+                    "price": 200,
+                    "image": 0,
+                    "qtty": "5"
+                }
+            ],
+            [
+                {
+                    "name": "Oculus Rift",
+                    "category": [],
+                    "price": 500,
+                    "image": 0,
+                    "qtty": 4
+                }
             ]
         ]
     }
