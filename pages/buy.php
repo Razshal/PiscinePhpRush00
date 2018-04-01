@@ -18,6 +18,10 @@ else if ($page === "previous")
     $page_num--;
 if ($page_num < 0)
     $page_num = 0;
+if (isset($_GET["categories"]))
+{
+    $_SESSION["navcat"] = $_GET["categories"];
+}
 ?>
 <html>
     <body>
@@ -48,7 +52,7 @@ if ($page_num < 0)
             </tr>
             <?php
             $items_per_page = 10;
-            if (isset($_GET["categories"]) && $_GET["categories"] != "")
+            if (isset($_SESSION["navcat"]) && $_SESSION["navcat"] != "")
             {
                 $count = 0;
                 $items = get_product_database();
@@ -58,25 +62,28 @@ if ($page_num < 0)
                     $start = 0;
                 foreach ($items["products"] as $product)
                 {
-                    if (in_array($_GET["categories"], $product["category"], true))
+                    if ($count >= $start)
                     {
+                        if (in_array($_SESSION["navcat"], $product["category"], true))
+                        {
+                            $count++;
+                            ?>
+                            <tr>
+                            <td><img src="<?php echo $product["image"] ?>"/></td>
+                            <td><?php echo $product["name"] ?></td>
+                            <td><?php echo $product["price"] ?></td>
+                            <td>
+                                <form method="post" action="buy.php" name="buy.php">
+                                    <input type="submit" name="submit" value="add">
+                                    <input type="hidden" name="product" value="<?php echo $product["name"]; ?>">
+                                </form>
+                            </td>
+                            </tr><?php
+                        }
                         $count++;
-                        ?>
-                    <tr>
-                        <td><img src="<?php echo $product["image"]?>"/></td>
-                        <td><?php echo $product["name"]?></td>
-                        <td><?php echo $product["price"]?></td>
-                        <td>
-                            <form method="post" action="buy.php" name="buy.php">
-                                <input type="submit" name="submit" value="add">
-                                <input type="hidden" name="product" value="<?php echo $product["name"]; ?>">
-                            </form>
-                        </td>
-                    </tr><?php
+                        if (($count - $start) >= $items_per_page)
+                            break;
                     }
-                    $count++;
-                    if (($count - $start) >= $items_per_page)
-                        break;
                 }
             }
             else
@@ -110,8 +117,8 @@ if ($page_num < 0)
             }
                 ?>
             <form method="post" action="buy.php" name="buy.php">
-                <input type="submit" name="page" value="next"/>
                 <input type="submit" name="page" value="previous"/>
+                <input type="submit" name="page" value="next"/>
                 <input type="hidden" name="page_num" value="<?php echo $page_num ?>"/>
             </form>
         </table>
