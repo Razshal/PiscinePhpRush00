@@ -1,6 +1,6 @@
 {
     "orders": {
-        "": [
+        "t": [
             [
                 {
                     "name": "Oculus Rift",
@@ -9,7 +9,7 @@
                     ],
                     "price": 500,
                     "image": 0,
-                    "qtty": 2
+                    "qtty": 1
                 },
                 {
                     "name": "Oculus Rift DK2",
@@ -18,7 +18,7 @@
                     ],
                     "price": 200,
                     "image": 0,
-                    "qtty": 2
+                    "qtty": 1
                 }
             ]
         ]

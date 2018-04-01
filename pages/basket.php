@@ -8,7 +8,8 @@ if (isset($_POST["action"]) && $_POST["action"] === "Purchase"
 {
     if (!isset($_SESSION["logged_on_user"]) || $_SESSION["logged_on_user"] == "")
         header("location: /pages/login.php");
-    else if (create_order() === true)
+    else if (get_user($_SESSION["logged_on_user"])
+        && create_order($_SESSION["logged_on_user"], $_SESSION["basket"]) === true)
     {
         destroy_basket();
         header("location: /pages/success_order.php");
