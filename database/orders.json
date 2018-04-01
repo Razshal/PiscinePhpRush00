@@ -65,6 +65,17 @@
                     "image": "https:\/\/cdn.idealo.com\/folder\/Product\/4056\/4\/4056425\/s4_produktbild_gross\/sony-playstation-4-ps4.png",
                     "qtty": 3
                 }
+            ],
+            [
+                {
+                    "name": "Abouvero",
+                    "category": [
+                        "Student"
+                    ],
+                    "price": "10",
+                    "image": "https:\/\/cdn.intra.42.fr\/users\/medium_abouvero.jpg",
+                    "qtty": "7"
+                }
             ]
         ]
     }
