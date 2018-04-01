@@ -52,6 +52,10 @@ if ($page_num < 0)
             {
                 $count = 0;
                 $items = get_product_database();
+                if (isset($page_num) && is_numeric($page_num))
+                    $start = $page_num * $items_per_page;
+                else
+                    $start = 0;
                 foreach ($items["products"] as $product)
                 {
                     if (in_array($_GET["categories"], $product["category"], true))
@@ -70,7 +74,8 @@ if ($page_num < 0)
                         </td>
                     </tr><?php
                     }
-                    if ($count >= $items_per_page)
+                    $count++;
+                    if (($count - $start) >= $items_per_page)
                         break;
                 }
             }
@@ -103,7 +108,6 @@ if ($page_num < 0)
                         break;
                 }
             }
-            var_dump($page_num);
                 ?>
             <form method="post" action="buy.php" name="buy.php">
                 <input type="submit" name="page" value="next"/>
