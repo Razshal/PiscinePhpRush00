@@ -17,6 +17,12 @@
       "category": ["video"],
       "price": 200,
       "image": 0
+    },
+    {
+      "name": "Another screen",
+      "category": ["video"],
+      "price": 200,
+      "image": 0
     }
   ]
 }

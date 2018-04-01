@@ -59,15 +59,16 @@ $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"
                     </tr>
                 <?php
                 foreach ($order as $item)
-                {
-                    ?>
+                {?>
                     <tr>
                         <td><?php echo $item["name"]; ?></td>
                         <td><?php echo $item["price"]; ?></td>
                         <td><?php echo $item["qtty"]; ?></td>
                     </tr>
+
+                <?php
+                }?>
                 </table><?php
-                }
             }
         }
         if ($altered_user)

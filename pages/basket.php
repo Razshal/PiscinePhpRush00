@@ -43,22 +43,26 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
     <body>
         <?php include "../site_structure/header.php";?>
         <h1>Your Basket</h1>
+
+        <?php
+        $total = 0;
+        if (isset($_SESSION["basket"]) && !empty($_SESSION["basket"]))
+        {?>
         <table>
             <tr>
+                <th>Image</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Action</th>
             </tr>
-        <?php
-        $total = 0;
-        if (isset($_SESSION["basket"]))
-        {
+            <?php
             foreach ($_SESSION["basket"] as $item)
             {
                 $total+= $item["price"] * $item["qtty"];
             ?>
                 <tr>
+                    <td><img src="<?php echo $item["name"];?>"/></td>
                     <td><?php echo $item["name"];?></td>
                     <td><?php echo $item["price"];?></td>
                     <td>
@@ -76,14 +80,20 @@ if (isset($_POST["action"]) && $_POST["action"] === "Update"
                     </td>
                 </tr>
             <?php
-            }
-        }?>
-        </table>
-        <h2>Total : <?php echo $total;?></h2>
+            }?>
+            </table>
+            <h2>Total : <?php echo $total;?></h2>
+
+            <form method="post" action="basket.php" name="basket.php">
+                <input type="submit" name="action" value="Purchase">
+            </form>
+            <?php
+        }
+        else
+            echo "<h2>Nothing to display</h2>"?>
         <?php if ($success === false) echo "<h3>Error</h3>";?>
-        <form method="post" action="basket.php" name="basket.php">
-            <input type="submit" name="action" value="Purchase">
-        </form>
+
+
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

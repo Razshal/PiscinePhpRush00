@@ -1,3 +1,37 @@
 {
-    "orders": []
+    "orders": {
+        "admin": [
+            [
+                {
+                    "name": "Oculus Rift",
+                    "category": [
+                        "vr",
+                        "screen",
+                        "video games"
+                    ],
+                    "price": 500,
+                    "image": 0,
+                    "qtty": 1
+                },
+                {
+                    "name": "Oculus Rift DK2",
+                    "category": [
+                        "vr"
+                    ],
+                    "price": 200,
+                    "image": 0,
+                    "qtty": 1
+                },
+                {
+                    "name": "A screen",
+                    "category": [
+                        "video"
+                    ],
+                    "price": 200,
+                    "image": 0,
+                    "qtty": 1
+                }
+            ]
+        ]
+    }
 }
