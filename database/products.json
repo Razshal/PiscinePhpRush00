@@ -1,38 +1,48 @@
 {
     "products": [
         {
-            "name": "Another screen",
-            "category": [
-                "video"
-            ],
-            "price": 200,
-            "image": 0
-        },
-        {
             "name": "Oculus Rift",
-            "category": [
-                "vr",
-                "screen",
-                "video games"
-            ],
+            "category": [],
             "price": 500,
             "image": 0
         },
         {
             "name": "Oculus Rift DK2",
-            "category": [
-                "vr"
-            ],
+            "category": [],
             "price": 200,
             "image": 0
         },
         {
             "name": "A screen",
-            "category": [
-                "video"
-            ],
+            "category": [],
             "price": 200,
             "image": 0
+        },
+        {
+            "name": "Another screen",
+            "category": [],
+            "price": 200,
+            "image": 0
+        },
+        {
+            "name": "fdsgsdg",
+            "category": [],
+            "price": "12",
+            "image": "ghjghj"
+        },
+        {
+            "name": "hgfhgfjhgjgh",
+            "category": [],
+            "price": "50",
+            "image": "hfdfgh"
+        },
+        {
+            "name": "dfgfdgdfg",
+            "category": [
+                "vr"
+            ],
+            "price": "50",
+            "image": "hghgfhfgh"
         }
     ]
 }

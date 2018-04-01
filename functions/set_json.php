@@ -192,28 +192,34 @@ function delete_category ($category)
     $prod_database = get_product_database();
     foreach ($database["categories"] as &$cat)
     {
+        var_dump($cat);
         if ($cat["name"] === $category)
         {
-            $temp = $database["categories"][0];
+            $tempo = $database["categories"][0];
             $database["categories"][0] = $cat;
-            $cat = $temp;
-            array_shift($cat);
+            $cat = $tempo;
+            array_shift($database["categories"]);
             if (!file_put_contents(CAT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
                 return false;
             foreach ($prod_database["products"] as &$prod)
             {
                 foreach ($prod["category"] as &$catarray)
                 {
-                    $temp = $prod["category"][0];
-                    $prod["category"][0] = $catarray;
-                    $catarray = $temp;
-                    array_shift($prod["category"]);
-                    array_values($cat);
-                    alter_product($prod["name"], $prod["category"], $prod["price"], $prod["image"]);
+                    if ($catarray === $category)
+                    {
+                        var_dump($catarray);
+                        $temp = $prod["category"][0];
+                        $prod["category"][0] = $catarray;
+                        $catarray = $temp;
+                        array_shift($prod["category"]);
+                        if (!file_put_contents(PRODUCT_DATABASE, json_encode($prod_database, JSON_PRETTY_PRINT)))
+                            return false;
+                    }
                 }
             }
+            break;
         }
-        break;
+
     }
     return true;
 }
