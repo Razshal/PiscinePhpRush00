@@ -17,5 +17,8 @@
                 echo count($_SESSION["basket"]);
             else
                 echo 0;?>)</a>
+        <?php
+        if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
+            echo "<a href=\"/pages/admin.php\">Admin</a>";?>
     </nav>
 </header>

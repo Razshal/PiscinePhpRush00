@@ -102,12 +102,12 @@ if (isset($_GET["categories"]))
                             <td><img src="<?php echo $product["image"] ?>"/></td>
                             <td><?php echo $product["name"] ?></td>
                             <td><?php echo $product["price"] ?></td>
-                        <td>
-                            <form method="post" action="buy.php" name="buy.php">
-                                <input type="submit" name="submit" value="add"/>
-                                <input type="hidden" name="product" value="<?php echo $product["name"]; ?>"/>
-                            </form>
-                        </td>
+                            <td>
+                                <form method="post" action="buy.php" name="buy.php">
+                                    <input type="submit" name="submit" value="add"/>
+                                    <input type="hidden" name="product" value="<?php echo $product["name"]; ?>"/>
+                                </form>
+                            </td>
                         </tr><?php
                     }
                     $count++;

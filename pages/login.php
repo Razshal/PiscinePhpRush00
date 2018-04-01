@@ -6,7 +6,13 @@ if (isset($_POST["login"]) && isset($_POST["passwd"])
     && auth($_POST["login"], $_POST["passwd"]) === true)
     $_SESSION["logged_on_user"] = $_POST["login"];
 else
+{
     $_SESSION["logged_on_user"] = "";
+    $_SESSION["admin"] = "";
+    session_destroy();
+}
+if (get_user($_SESSION["logged_on_user"])["isadmin"] == 1)
+    $_SESSION["admin"] = 1;
 $logged_user = (isset($_SESSION["logged_on_user"]) && $_SESSION["logged_on_user"] != "");
 ?>
 <html>
