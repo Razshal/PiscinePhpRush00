@@ -26,6 +26,16 @@ function get_user($login)
     }
     return NULL;
 }
+function is_there_any_admin()
+{
+    $database = get_users_database();
+    foreach ($database as $user)
+    {
+        if ($user["isadmin"] === 1)
+            return true;
+    }
+    return false;
+}
 
 function get_product_database()
 {

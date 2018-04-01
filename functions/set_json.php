@@ -43,7 +43,7 @@ function delete_user ($login)
         return false;
     return true;
 }
-function alter_user($login, $oldpw, $newpw)
+function alter_user($login, $oldpw, $newpw, $isadmin = 0)
 {
     if (!file_exists(PATH))
         mkdir(PATH);
@@ -59,6 +59,7 @@ function alter_user($login, $oldpw, $newpw)
                     return false;
                 break;
             }
+            $user["isadmin"] = $isadmin;
         }
     }
     return true;
