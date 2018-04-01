@@ -173,12 +173,47 @@ function alter_category ($category, $category_new_name)
                 foreach ($prod["category"] as &$catstr)
                 {
                     if ($catstr === $category)
+                    {
                         $catstr = $category_new_name;
-                    alter_product($prod["name"], $prod["category"], $prod["price"], $prod["image"]);
+                        alter_product($prod["name"], $prod["category"], $prod["price"], $prod["image"]);
+                    }
                 }
             }
             break;
         }
+    }
+    return true;
+}
+function delete_category ($category)
+{
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_categories_database();
+    $prod_database = get_product_database();
+    foreach ($database["categories"] as &$cat)
+    {
+        if ($cat["name"] === $category)
+        {
+            $temp = $database["categories"][0];
+            $database["categories"][0] = $cat;
+            $cat = $temp;
+            array_shift($cat);
+            if (!file_put_contents(CAT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+                return false;
+            foreach ($prod_database["products"] as &$prod)
+            {
+                foreach ($prod["category"] as &$catarray)
+                {
+                    $temp = $prod["category"][0];
+                    $prod["category"][0] = $catarray;
+                    $catarray = $temp;
+                    array_shift($prod["category"]);
+                    array_values($cat);
+                    alter_product($prod["name"], $prod["category"], $prod["price"], $prod["image"]);
+                }
+            }
+        }
+        break;
     }
     return true;
 }

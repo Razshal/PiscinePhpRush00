@@ -1,11 +1,11 @@
 {
-  "categories":
-  [
-    {
-      "name" : "vr"
-    },
-    {
-      "name" : "video"
-    }
-  ]
+    "categories": [
+        [],
+        {
+            "name": "vr"
+        },
+        {
+            "name": "video"
+        }
+    ]
 }

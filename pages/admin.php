@@ -18,19 +18,19 @@ if ($_SESSION["admin"] === 1)
         if ($_POST["action_user"] === "unmake_admin")
             make_admin_or_not($_POST["user"], 0);
     }
-    if (isset($_POST["action_cat"]) && $_POST["action_cat"] != ""
-        && isset($_POST["cat"]) && get_user($_POST['cat']))
+
+    else if (isset($_POST["action_cat"]) && $_POST["action_cat"] != ""
+        && isset($_POST["cat"]))
     {
         if ($_POST["action_cat"] === "delete")
-        {
-            delete_ca;
-        }
+            delete_category($_POST["cat"]);
+        if ($_POST["action_cat"] === "add")
+            create_category($_POST["cat"]);
     }
     $users = get_users_database();
     $products = get_product_database();
     $categories = get_categories_database();
     ?>
-
     <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
@@ -57,8 +57,15 @@ if ($_SESSION["admin"] === 1)
                 </td>
 
                 </tr><?php
-            } ?>
+            }?>
         </table>
+        <h1>Add user</h1>
+        <form method="post" action="signed.php" name="signed.php">
+            Identifiant: <input type="text" name="login"/>
+            <br/>
+            Mot de passe: <input type="password" name="passwd"/>
+            <input type="submit" name="submit" value="OK"/>
+        </form>
         <h1>categories</h1>
         <table>
             <tr>
@@ -75,9 +82,12 @@ if ($_SESSION["admin"] === 1)
                         <input type="hidden" name="cat" value="<?php echo $item["name"] ?>">
                     </form>
                 </td>
-
                 </tr><?php
             } ?>
+            <form method="post" action="admin.php" name="admin.php">
+                <input type="submit" name="action_cat" value="add">
+                <input type="text" name="cat" value="">
+            </form>
         </table>
 
 
