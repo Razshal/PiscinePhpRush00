@@ -2,7 +2,7 @@
 include_once ("get_json.php");
 include_once ("auth.php");
 
-function create_user ($login, $passwd, $isadmin)
+function create_user ($login, $passwd, $isadmin = 0)
 {
     if (!file_exists(PATH))
         mkdir(PATH);
@@ -10,8 +10,7 @@ function create_user ($login, $passwd, $isadmin)
     $array = array(
         "login" => $login,
         "passwd" => hash_pw($passwd),
-        "isadmin" => 0,
-        "orders" => array()
+        "isadmin" => $isadmin
     );
     $database["users"][] = $array;
     if (!file_put_contents(USERS_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))

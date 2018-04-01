@@ -29,9 +29,9 @@ function get_user($login)
 function is_there_any_admin()
 {
     $database = get_users_database();
-    foreach ($database as $user)
+    foreach ($database["users"] as $user)
     {
-        if ($user["isadmin"] === 1)
+        if ($user["isadmin"] == 1)
             return true;
     }
     return false;
