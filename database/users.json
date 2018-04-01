@@ -21,6 +21,16 @@
             "login": "a",
             "passwd": "8aca2602792aec6f11a67206531fb7d7f0dff59413145e6973c45001d0087b42d11bc645413aeff63a42391a39145a591a92200d560195e53b478584fdae231a",
             "isadmin": 0
+        },
+        {
+            "login": "smickael",
+            "passwd": "4925da7da7a56260baf1c37925a8fa24e46ad8b107dcd21f44e39e4751bae1304fc70de7acb847ffa96126bb372de005f5320f1ede6f9df07c7d53f9c160f022",
+            "isadmin": 1
+        },
+        {
+            "login": "Georges",
+            "passwd": "27db86ef74539c69de7197ec108deda538d1a840e7d2f4b92f8be6c92557e422d1446cd28ba14bba55cf40123f6fb929ce3120832d279de116b7b50989159b32",
+            "isadmin": 0
         }
     ]
 }

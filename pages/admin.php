@@ -20,8 +20,9 @@ if (isset($_POST["action_user"]) && $_POST["action_user"] != "")
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
-
-        <h1>Users</h1>
+        <?php include_once "../site_structure/sidemenu.php"; ?>
+        <div id="sidePanel">
+            <h1>Users</h1>
             <table>
                 <tr>
                     <th>Name</th>
@@ -44,6 +45,8 @@ if (isset($_POST["action_user"]) && $_POST["action_user"] != "")
                 </tr><?php
                 }?>
             </table>
+        </div>
+        <div id="content">
         <h1>Add User</h1>
         <form method="post" action="signed.php" name="signed.php">
             Identifiant: <input type="text" name="login"/>
@@ -51,7 +54,7 @@ if (isset($_POST["action_user"]) && $_POST["action_user"] != "")
             Mot de passe: <input type="password" name="passwd"/>
             <input type="submit" name="submit" value="OK"/>
         </form>
-
+    </div>
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

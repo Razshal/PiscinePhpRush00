@@ -1,17 +1,492 @@
-table
-{
-    background-color: #919191;
-    border-radius: 5px;
-    min-width: 40vw;
-    padding: 10px;
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css?family=Roboto:700i');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+/*******************************************************/
+/************************ BODY *************************/
+/*******************************************************/
+
+body {
+  background-color: #c9c9c9;
+  background: #A3A3A5;
+  background-size: auto;
+  max-width: 1400px;
+  margin: auto;
+  width: 100%;
 }
-tr
-{
-    text-align: center;
-    color: #e4e4e4;
+
+/*******************************************************/
+/************************ LOGO *************************/
+/*******************************************************/
+
+.logo {
+  float: left;
+  margin: -35px 10px -30px 8px;
+  padding: 0 0 0 20px;
+  font-family: 'Permanent Marker', cursive;
+  text-decoration: none;
+  font-size: 30px;
+  color: #242424;
+  opacity: 0.7;
+  clear: both;
 }
-th
-{
-    text-align: center;
-    padding-bottom: 20px;
+
+.logo a {
+  text-decoration: none;
+  color: #242424;
+}
+
+.logo a:hover {
+  color: #242424;
+  text-decoration: none;
+}
+
+/*******************************************************/
+/************************ MENU *************************/
+/*******************************************************/
+
+#cssmenu {
+  position: relative;
+  display: block;
+  margin-left: 250px;
+  margin-top: 5px;
+  background: #2b2f3a;
+}
+
+#cssmenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+#cssmenu>ul {
+  position: relative;
+  display: block;
+  background: #2b2f3a;
+  width: 100%;
+  z-index: 500;
+}
+
+#cssmenu.align-right>ul>li {
+  font-family: 'Montserrat', sans-serif;
+  float: right;
+}
+
+#cssmenu.align-center ul {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+#cssmenu.align-center ul ul {
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+}
+
+#cssmenu>ul>li {
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+#cssmenu>ul>#menu-button {
+  display: none;
+}
+
+#cssmenu ul li a {
+  display: block;
+  ffont-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+#cssmenu>ul>li>a {
+  height: 20px;
+  font-size: 12px;
+  padding: 15px 20px;
+  color: #e2e2e2;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/*******************************************************/
+/********************** SIDEMENU ***********************/
+/*******************************************************/
+
+.widget {
+  width: 213px;
+  float: left;
+  margin: 0 10px 20px 8px;
+  background: #fff;
+  padding: 20px 0 20px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 1.25em;
+  color: #242424;
+  opacity: 0.7;
+  margin-top: 27px;
+  text-decoration: none;
+  -moz-box-shadow: -4px 3px 5px 2px #656565;
+  -webkit-box-shadow: -4px 3px 5px 2px #656565;
+  -o-box-shadow: -4px 3px 5px 2px #656565;
+  box-shadow: -4px 3px 5px 2px #656565;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=216, Strength=5);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  clear: both;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  font-weight: bold;
+}
+
+a:link {
+  text-decoration: none;
+  color: #000;
+}
+
+a.esp {
+  color: #803689;
+}
+
+a.cor {
+  color: #00873E;
+}
+
+a.acc {
+  color: #EB7128;
+}
+
+a.std {
+  color: #1271B4;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.widget ul {
+  margin: 0;
+  padding: 0 20px 0 5px;
+}
+
+.widget li {
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  clear: both;
+  border-top: dotted 1px #231f20;
+}
+
+.widget ul li a {
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  transation-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+}
+
+.widget ul li a:hover.esp {
+  background-color: #803689;
+  color: #fff;
+  padding: 5px 10px 5px 15px;
+  -webkit-border-radius: 0 8px 8px 0;
+  -moz-border-radius: 0 8px 8px 0;
+  border-radius: 0 8px 8px 0;
+  text-decoration: none;
+}
+
+.widget ul li a:hover.cor {
+  background-color: #00873E;
+  color: #fff;
+  padding: 5px 10px 5px 15px;
+  -webkit-border-radius: 0px 8px 8px 0px;
+  -moz-border-radius: 0px 8px 8px 0px;
+  border-radius: 0px 8px 8px 0px;
+  text-decoration: none;
+}
+
+.widget ul li a:hover.acc {
+  background-color: #EB7128;
+  color: #fff;
+  padding: 5px 10px 5px 15px;
+  -webkit-border-radius: 0px 8px 8px 0px;
+  -moz-border-radius: 0px 8px 8px 0px;
+  border-radius: 0px 8px 8px 0px;
+  text-decoration: none;
+}
+
+.widget ul li a:hover:before {
+  content: '';
+  color: #1271B4;
+}
+
+
+/*******************************************************/
+/************************ MAIN *************************/
+/*******************************************************/
+
+#content {
+  background: #fff;
+  margin: 30px 30px;
+  padding: 20px 45px;
+  width: 75.7%;
+  display: block;
+  margin-left: 250px;
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 14px;
+  line-height: 1.25em;
+  color: #242424;
+  margin-top: 15px;
+  opacity: 0.7;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#contentindex {
+  margin: 30px 30px;
+  padding: 20px 45px;
+  width: 75.7%;
+  display: block;
+  margin-left: 250px;
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 14px;
+  line-height: 1.25em;
+  color: #242424;
+  margin-top: 15px;
+  opacity: 0.7;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  overflow: auto;
+}
+
+.line {
+  width: auto;
+  height: 30px;
+}
+
+.instruct {
+  width: 20px;
+}
+
+.inst {
+  text-align: right;
+  margin-top: -33px;
+}
+
+footer {
+  clear: both;
+  position: i;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2b2f3a;
+  text-align: center;
+  height: 40px;
+  bottom: 0;
+  width: 1400px;
+  padding-bottom: 5px;
+}
+
+
+/*******************************************************/
+/************************ ADUI *************************/
+/*******************************************************/
+
+
+/* Full-width input fields */
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+/* Extra styles for the cancel button */
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+
+/* Center the image and position the close button */
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+  font-family: 'Montserrat', sans-serif;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/*******************************************************/
+/*********************** STORE *************************/
+/*******************************************************/
+
+figure {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff;
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin: 0.5em;
+  padding: 0.5em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+figure img {
+  padding-left: 50px;
+  width: 100px;
+}
+
+.thumbnail {
+  width: 250px;
+  height: 120px;
+  overflow: hidden;
+}
+
+#thumb {
+  width: 100px;
+}
+
+/*******************************************************/
+/*********************** ADMIN *************************/
+/*******************************************************/
+
+#sidePanel {
+	width: 213px;
+  float: left;
+  margin: 0 10px 20px 8px;
+  background: #fff;
+  padding: 20px 0px 20px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 1.25em;
+  color: #242424;
+  opacity: 0.7;
+  margin-top: 27px;
+  text-decoration: none;
+  -moz-box-shadow: -4px 3px 5px 2px #656565;
+  -webkit-box-shadow: -4px 3px 5px 2px #656565;
+  -o-box-shadow: -4px 3px 5px 2px #656565;
+  box-shadow: -4px 3px 5px 2px #656565;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=216, Strength=5);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  clear: both;
+}
+
+/*******************************************************/
+/************************ SHOP *************************/
+/*******************************************************/
+
+#shop th {
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#shopimg{
+	width: 20%;
+}
+
+#shop td {
+	padding-top: 10px;
+	font-family: 'Roboto', sans-serif;
+}
+
+#shop tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+
+#submit {
+	margin-top: 19px;
+	background-color: #4CAF50;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #fff;
+	border-radius: 5px;
+}
+
+#update {
+	width: 100%;
+	background-color: #4CAF50;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #fff;
+	border-radius: 5px;
 }
