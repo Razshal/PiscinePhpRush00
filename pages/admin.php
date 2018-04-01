@@ -43,8 +43,6 @@ if ($_SESSION["admin"] === 1)
             }
             create_product($_POST["name"], $cat_array, $_POST["price"], $_POST["image"]);
         }
-        else
-            var_dump($_POST);
     }
     $users = get_users_database();
     $products = get_product_database();
