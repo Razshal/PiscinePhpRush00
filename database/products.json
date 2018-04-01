@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "Oculus Rift",
-      "category": ["vr"],
+      "category": ["vr", "screen", "video games"],
       "price": 500,
       "image": 0
     },

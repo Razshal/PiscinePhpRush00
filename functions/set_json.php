@@ -116,7 +116,7 @@ function alter_product($name, $category, $price, $image)
         {
             $item["name"] = $name;
             $item["price"] = $price;
-            $item["image"] = $price;
+            $item["image"] = $image;
             $item["category"] = $category;
             if ($done === false
                 || !file_put_contents(PRODUCT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
@@ -136,6 +136,33 @@ function create_category ($category)
     $database["categories"][] = $list;
     if (!file_put_contents(CAT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
         return false;
+    return true;
+}
+function alter_category ($category, $category_new_name)
+{
+    if (!file_exists(PATH))
+        mkdir(PATH);
+    $database = get_categories_database();
+    $prod_database = get_product_database();
+    foreach ($database["categories"] as &$cat)
+    {
+        if ($cat["name"] === $category)
+        {
+            $cat["name"] = $category_new_name;
+            if (!file_put_contents(CAT_DATABASE, json_encode($database, JSON_PRETTY_PRINT)))
+                return false;
+            foreach ($prod_database["products"] as &$prod)
+            {
+                foreach ($prod["category"] as &$catstr)
+                {
+                    if ($catstr === $category)
+                        $catstr = $category_new_name;
+                    alter_product($prod["name"], $prod["category"], $prod["price"], $prod["image"]);
+                }
+            }
+            break;
+        }
+    }
     return true;
 }
 
