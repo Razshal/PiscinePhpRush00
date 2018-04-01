@@ -16,6 +16,8 @@ else if (!get_user($_POST["login"]) && !is_there_any_admin())
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
+        <?php include "../site_structure/sidemenu.php"; ?>
+    <div id="content">
     <?php
     if (!is_there_any_admin())
     {?>
@@ -33,9 +35,10 @@ else if (!get_user($_POST["login"]) && !is_there_any_admin())
         echo "<h1 id=\"error\">error</h1>";
     else
     {?>
-        <h1>The setup has already been done</h1>
+        <h1>The setup has already been done.</h1>
     <?php
     }?>
+    </div>
             <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

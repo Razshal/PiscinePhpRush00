@@ -26,6 +26,8 @@ if (isset($_GET["categories"]))
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
+        <?php include "../site_structure/sidemenu.php"; ?>
+        <div id="content">
         <h1>Our products</h1>
 
         <form method="get" action="buy.php" name="buy.php">
@@ -43,10 +45,10 @@ if (isset($_GET["categories"]))
             <input type="submit" value="Filter">
         </form>
 
-        <table>
+        <table id="shop">
             <tr>
-                <th>Image</th>
-                <th>Name</th>
+                <th style="width: 20%;">Image</th>
+                <th style="width: 40%;"">Name</th>
                 <th>Price</th>
                 <th>Add to basket</th>
             </tr>
@@ -69,12 +71,12 @@ if (isset($_GET["categories"]))
                             $count++;
                             ?>
                             <tr>
-                            <td><img src="<?php echo $product["image"] ?>"/></td>
+                            <td><img id="thumb" src="<?php echo $product["image"] ?>"/></td>
                             <td><?php echo $product["name"] ?></td>
-                            <td><?php echo $product["price"] ?></td>
+                            <td><?php echo $product["price"] ?>&euro;</td>
                             <td>
                                 <form method="post" action="buy.php" name="buy.php">
-                                    <input type="submit" name="submit" value="add">
+                                    <input type="submit" id="submit" name="submit" value="add">
                                     <input type="hidden" name="product" value="<?php echo $product["name"]; ?>">
                                 </form>
                             </td>
@@ -99,12 +101,12 @@ if (isset($_GET["categories"]))
                     {
                         ?>
                         <tr>
-                            <td><img src="<?php echo $product["image"] ?>"/></td>
+                            <td><img id="thumb" src="<?php echo $product["image"] ?>"/></td>
                             <td><?php echo $product["name"] ?></td>
-                            <td><?php echo $product["price"] ?></td>
+                            <td><?php echo $product["price"] ?>&euro;</td>
                             <td>
                                 <form method="post" action="buy.php" name="buy.php">
-                                    <input type="submit" name="submit" value="add"/>
+                                    <input type="submit" id="submit" name="submit" value="add"/>
                                     <input type="hidden" name="product" value="<?php echo $product["name"]; ?>"/>
                                 </form>
                             </td>
@@ -122,6 +124,7 @@ if (isset($_GET["categories"]))
                 <input type="hidden" name="page_num" value="<?php echo $page_num ?>"/>
             </form>
         </table>
+    </div>
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>

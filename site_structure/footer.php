@@ -1,4 +1,3 @@
 <footer>
-    <hr/>
-    <p>Some footer content</p>
+    <p>GAMESHOP - 2018 - Made with ❤️  by mfonteni & smickael</p>
 </footer>

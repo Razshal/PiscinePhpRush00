@@ -31,15 +31,18 @@ else
 <html>
     <body>
         <?php include "../site_structure/header.php"; ?>
+        <?php include "../site_structure/sidemenu.php"; ?>
+<div id="content">
 
         <h1>
             <?php
                 if ($success === false)
-                    echo "Failed to sign you in, maybe this login already exists or your datas are incorrect";
+                    echo "<p>Failed to sign you in, maybe this login already exists or your datas are incorrect.<p>";
                 else
-                    echo "Your account has been created";
+                    echo "<p>Your account has been created. You may now log in.<p>";
             ?>
         </h1>
+    </div>
         <?php include "../site_structure/footer.php"; ?>
     </body>
 </html>
