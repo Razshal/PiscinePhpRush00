@@ -3,6 +3,7 @@ include "../site_structure/head.php";
 include "../functions/get_json.php";
 include "../functions/set_json.php";
 
+var_dump(get_category("vr"));
 if ($_SESSION["admin"] === 1)
 {
     if (isset($_POST["action_user"]) && $_POST["action_user"] != ""

@@ -78,7 +78,7 @@ function get_category($name)
     $database = get_categories_database();
     foreach ($database["categories"] as $cat)
     {
-        if ($cat === $name)
+        if ($cat["name"] === $name)
             return $cat;
     }
     return NULL;
