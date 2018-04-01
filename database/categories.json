@@ -1,10 +1,13 @@
 {
     "categories": [
         {
+            "name": "video games"
+        },
+        {
             "name": "vr"
         },
         {
-            "name": "video games"
+            "name": "test"
         }
     ]
 }
