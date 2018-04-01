@@ -23,8 +23,13 @@ if ($_SESSION["admin"] === 1)
     {
         if ($_POST["action_cat"] === "delete")
             delete_category($_POST["cat"]);
+        if ($_POST["action_cat"] === "update" && isset($_POST["oldname"]))
+            alter_category($_POST["oldname"], $_POST["cat"]);
         if ($_POST["action_cat"] === "add")
+        {
+            var_dump($_POST["cat"]);
             create_category($_POST["cat"]);
+        }
     }
     else if (isset($_POST["action_prod"]) && $_POST["action_prod"] != "")
     {
@@ -97,11 +102,12 @@ if ($_SESSION["admin"] === 1)
                 if (is_array($item)) {
                     ?>
                     <tr>
-                    <td><?php echo $item["name"] ?></td>
                     <td>
                         <form method="post" action="admin.php" name="admin.php">
+                            <input type="text" name="cat" value="<?php echo $item["name"] ?>">
+                            <input type="submit" name="action_cat" value="update">
                             <input type="submit" name="action_cat" value="delete">
-                            <input type="hidden" name="cat" value="<?php echo $item["name"] ?>">
+                            <input type="hidden" name="oldname" value="<?php echo $item["name"] ?>">
                         </form>
                     </td>
                     </tr><?php
@@ -158,16 +164,14 @@ if ($_SESSION["admin"] === 1)
             </tr>
         </table>
         </form>
-
-
         <?php include "../site_structure/footer.php"; ?>
     </body>
     </html>
     <?php
 }
 else
-{?>
-        <?php include "../site_structure/head.php"; ?>
+{
+    include "../site_structure/head.php"; ?>
     <html>
         <body>
             <?php include "../site_structure/header.php"; ?>

@@ -48,6 +48,7 @@ if (isset($_GET["categories"]))
         <table id="shop">
             <tr>
                 <th style="width: 20%;">Image</th>
+                <th style="width: 20%;">Cat</th>
                 <th style="width: 40%;"">Name</th>
                 <th>Price</th>
                 <th>Add to basket</th>
@@ -66,12 +67,16 @@ if (isset($_GET["categories"]))
                 {
                     if ($count >= $start)
                     {
-                        if (in_array($_SESSION["navcat"], $product["category"], true))
+                        if (is_array($product["category"])
+                            && in_array($_SESSION["navcat"], $product["category"], true))
                         {
                             $count++;
                             ?>
                             <tr>
                             <td><img id="thumb" src="<?php echo $product["image"] ?>"/></td>
+                            <td><?php
+                                if (is_array($product["category"]) && isset($product["category"]))
+                                    echo implode(", ", $product["category"]) ?></td>
                             <td><?php echo $product["name"] ?></td>
                             <td><?php echo $product["price"] ?>&euro;</td>
                             <td>
@@ -102,6 +107,9 @@ if (isset($_GET["categories"]))
                         ?>
                         <tr>
                             <td><img id="thumb" src="<?php echo $product["image"] ?>"/></td>
+                            <td><?php
+                                if (is_array($product["category"]) && isset($product["category"]))
+                                    echo implode(", ", $product["category"]) ?></td>
                             <td><?php echo $product["name"] ?></td>
                             <td><?php echo $product["price"] ?>&euro;</td>
                             <td>
