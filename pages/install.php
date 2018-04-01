@@ -17,7 +17,6 @@ else if (!get_user($_POST["login"]) && !is_there_any_admin())
     <body>
         <?php include "../site_structure/header.php"; ?>
     <?php
-    var_dump(is_there_any_admin());
     if (!is_there_any_admin())
     {?>
         <h1>Welcome to your first run of the webiste</h1>
