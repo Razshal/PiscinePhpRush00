@@ -1,13 +1,16 @@
 {
     "categories": [
         {
-            "name": "vr"
+            "name": "Console"
         },
         {
-            "name": "Student"
+            "name": "Figurines"
         },
         {
             "name": "Jeu video"
+        },
+        {
+            "name": "T-Shirt"
         }
     ]
 }
