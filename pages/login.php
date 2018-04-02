@@ -9,7 +9,6 @@ else
 {
     $_SESSION["logged_on_user"] = "";
     $_SESSION["admin"] = "";
-    session_destroy();
 }
 if (get_user($_SESSION["logged_on_user"])["isadmin"] == 1)
     $_SESSION["admin"] = 1;

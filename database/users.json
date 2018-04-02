@@ -18,6 +18,11 @@
         {
             "login": "Georges",
             "passwd": "27db86ef74539c69de7197ec108deda538d1a840e7d2f4b92f8be6c92557e422d1446cd28ba14bba55cf40123f6fb929ce3120832d279de116b7b50989159b32",
+            "isadmin": 1
+        },
+        {
+            "login": "yeryre",
+            "passwd": "0654a679afa48cd82e66016194dd9735526510a2f6fd4b9d182e68490383ea4d12ba0265a90aa8eb3f6794bb1de069f193ee1847dda8ee44e12a2e04214b0435",
             "isadmin": 0
         }
     ]

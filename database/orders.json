@@ -76,6 +76,17 @@
                     "image": "https:\/\/cdn.intra.42.fr\/users\/medium_abouvero.jpg",
                     "qtty": "7"
                 }
+            ],
+            [
+                {
+                    "name": "Abouvero",
+                    "category": [
+                        "Student"
+                    ],
+                    "price": "50",
+                    "image": "https:\/\/cdn.intra.42.fr\/users\/medium_abouvero.jpg",
+                    "qtty": "50"
+                }
             ]
         ]
     }

@@ -1,22 +1,6 @@
 {
     "products": [
         {
-            "name": "Assasin's Creed Origins",
-            "category": [
-                "Jeu video"
-            ],
-            "price": "150",
-            "image": "https:\/\/img.game.co.uk\/ml2\/6\/9\/5\/7\/695779_ps4_b.png"
-        },
-        {
-            "name": "Playstation 4",
-            "category": [
-                "Console"
-            ],
-            "price": "350",
-            "image": "https:\/\/cdn.idealo.com\/folder\/Product\/4056\/4\/4056425\/s4_produktbild_gross\/sony-playstation-4-ps4.png"
-        },
-        {
             "name": "Nintendo Switch",
             "category": [
                 "Console"
@@ -55,6 +39,30 @@
             ],
             "price": "99",
             "image": "https:\/\/images-na.ssl-images-amazon.com\/images\/I\/811pj8JZ8iL._SX342_.jpg"
+        },
+        {
+            "name": "Assasin's Creed Origins",
+            "category": [
+                "Jeu video"
+            ],
+            "price": "150",
+            "image": "https:\/\/img.game.co.uk\/ml2\/6\/9\/5\/7\/695779_ps4_b.png"
+        },
+        {
+            "name": "Playstation 4",
+            "category": [
+                "Console"
+            ],
+            "price": "350",
+            "image": "https:\/\/cdn.idealo.com\/folder\/Product\/4056\/4\/4056425\/s4_produktbild_gross\/sony-playstation-4-ps4.png"
+        },
+        {
+            "name": "Abouvero",
+            "category": [
+                "Student"
+            ],
+            "price": "80",
+            "image": "https:\/\/cdn.intra.42.fr\/users\/medium_abouvero.jpg"
         }
     ]
 }

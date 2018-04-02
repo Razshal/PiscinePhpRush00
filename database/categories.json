@@ -1,6 +1,9 @@
 {
     "categories": [
         {
+            "name": "T-Shirt"
+        },
+        {
             "name": "Console"
         },
         {
@@ -10,7 +13,7 @@
             "name": "Jeu video"
         },
         {
-            "name": "T-Shirt"
+            "name": "Student"
         }
     ]
 }
